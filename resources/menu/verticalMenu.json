@@ -1,0 +1,45 @@
+{
+  "menu": [
+    {
+      "url": "/home",
+      "name": "Ana Sayfa",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "pages-home"
+    },
+    {
+      "name": "Satış",
+      "icon": "menu-icon tf-icons ti ti-mood-dollar",
+      "slug": "satislar",
+      "submenu": [
+        {
+          "url": "satis/musteriSiparisleri",
+          "name": "Müşteri Siparişleri",
+          "slug": "satis-musteriSiparisleri"
+        }
+      ]
+    },
+    {
+      "name": "Stoklar",
+      "icon": "menu-icon tf-icons ti ti-layout-grid-add",
+      "slug": "stoklar",
+      "submenu": [
+        {
+          "url": "stoklar/kalite2liste",
+          "name": "2. Kalite (Akyazı)",
+          "slug": "stoklar-kalite2liste"
+        },
+        {
+          "url": "stoklar/kalite2sliste",
+          "name": "2. Kalite (Şekerpınar)",
+          "slug": "stoklar-kalite2sliste"
+        }
+      ]
+    },
+    {
+      "url": "/kullanicilar",
+      "name": "Kullanıcılar",
+      "icon": "menu-icon tf-icons ti ti-users",
+      "slug": "kullanicilar"
+    }
+  ]
+}
