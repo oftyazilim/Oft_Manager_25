@@ -7,31 +7,19 @@
       "slug": "pages-home"
     },
     {
-      "name": "Satış",
+      "name": "Planlama",
       "icon": "menu-icon tf-icons ti ti-mood-dollar",
-      "slug": "satislar",
+      "slug": "planlama",
       "submenu": [
         {
-          "url": "satis/musteriSiparisleri",
-          "name": "Müşteri Siparişleri",
-          "slug": "satis-musteriSiparisleri"
-        }
-      ]
-    },
-    {
-      "name": "Stoklar",
-      "icon": "menu-icon tf-icons ti ti-layout-grid-add",
-      "slug": "stoklar",
-      "submenu": [
-        {
-          "url": "stoklar/kalite2liste",
-          "name": "2. Kalite (Akyazı)",
-          "slug": "stoklar-kalite2liste"
+          "url": "planlama/isemirleri",
+          "name": "İş Emirleri",
+          "slug": "planlama-isemirleri"
         },
         {
-          "url": "stoklar/kalite2sliste",
-          "name": "2. Kalite (Şekerpınar)",
-          "slug": "stoklar-kalite2sliste"
+          "url": "planlama/mamuller",
+          "name": "Mamul Kartları",
+          "slug": "planlama-mamuller"
         }
       ]
     },

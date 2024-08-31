@@ -8,7 +8,7 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://127.0.0.1:8000',
+    'url' => 'http://192.168.5.103:8000',
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => NULL,
     'timezone' => 'Europe/Istanbul',
@@ -16,7 +16,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:A2u4nUmCvtdykwyPgPp5dqW9skjaxeuEVYUL7FkarVo=',
+    'key' => 'base64:LdxtxX9VpTpfn7rc7/FKCjnvgd6PxUe3HpcTM3/o/CA=',
     'previous_keys' => 
     array (
     ),
@@ -205,7 +205,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'OFT_MES_TEST',
+        'database' => 'OFT_MES',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -213,11 +213,11 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => '192.168.3.254',
+        'host' => '127.0.0.1',
         'port' => '1433',
-        'database' => 'OFT_MES_TEST',
+        'database' => 'OFT_MES',
         'username' => 'sa',
-        'password' => '145353',
+        'password' => 'reallyStrongPwd123',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -233,11 +233,11 @@
       array (
         'driver' => 'mariadb',
         'url' => NULL,
-        'host' => '192.168.3.254',
+        'host' => '127.0.0.1',
         'port' => '1433',
-        'database' => 'OFT_MES_TEST',
+        'database' => 'OFT_MES',
         'username' => 'sa',
-        'password' => '145353',
+        'password' => 'reallyStrongPwd123',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -253,11 +253,11 @@
       array (
         'driver' => 'pgsql',
         'url' => NULL,
-        'host' => '192.168.3.254',
+        'host' => '127.0.0.1',
         'port' => '1433',
-        'database' => 'OFT_MES_TEST',
+        'database' => 'OFT_MES',
         'username' => 'sa',
-        'password' => '145353',
+        'password' => 'reallyStrongPwd123',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -268,39 +268,11 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => '192.168.3.254',
+        'host' => '127.0.0.1',
         'port' => '1433',
-        'database' => 'OFT_MES_TEST',
+        'database' => 'OFT_MES',
         'username' => 'sa',
-        'password' => '145353',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'prefix_indexes' => true,
-        'trust_server_certificate' => 'true',
-      ),
-      'sqlAkyazi' => 
-      array (
-        'driver' => 'sqlsrv',
-        'url' => NULL,
-        'host' => '192.168.3.254',
-        'port' => '1433',
-        'database' => 'OFT_2024',
-        'username' => 'sa',
-        'password' => '145353',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'prefix_indexes' => true,
-        'trust_server_certificate' => 'true',
-      ),
-      'sqlSekerpinar' => 
-      array (
-        'driver' => 'sqlsrv',
-        'url' => NULL,
-        'host' => '192.168.1.101',
-        'port' => '1433',
-        'database' => 'OFT_2024',
-        'username' => 'sa',
-        'password' => '145353',
+        'password' => 'reallyStrongPwd123',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -355,7 +327,7 @@
       array (
         'driver' => 'local',
         'root' => '/Applications/XAMPP/xamppfiles/htdocs/Oft_Manager_25/storage/app/public',
-        'url' => 'http://127.0.0.1:8000/storage',
+        'url' => 'http://192.168.5.103:8000/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -588,18 +560,18 @@
   ),
   'mail' => 
   array (
-    'default' => 'smtp',
+    'default' => 'log',
     'mailers' => 
     array (
       'smtp' => 
       array (
         'transport' => 'smtp',
         'url' => NULL,
-        'host' => 'sandbox.smtp.mailtrap.io',
+        'host' => '127.0.0.1',
         'port' => '2525',
-        'encryption' => 'tls',
-        'username' => '2c9934729a3a2b',
-        'password' => '0b58007ac11aab',
+        'encryption' => NULL,
+        'username' => NULL,
+        'password' => NULL,
         'timeout' => NULL,
         'local_domain' => NULL,
       ),
@@ -650,7 +622,7 @@
     ),
     'from' => 
     array (
-      'address' => 'oft@windowslive.com',
+      'address' => 'hello@example.com',
       'name' => 'Laravel',
     ),
     'markdown' => 
@@ -731,7 +703,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => '127.0.0.1:8000',
+      5 => '192.168.5.103:8000',
     ),
     'guard' => 
     array (

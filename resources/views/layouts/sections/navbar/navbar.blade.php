@@ -53,7 +53,7 @@ $navbarDetached = ($navbarDetached ?? '');
         <div class="navbar-nav align-items-center">
           {{-- <div class="nav-item navbar-search-wrapper mb-0"> --}}
             {{-- <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);"> --}}
-              <i class="ti ti-file-description ti-md me-2 me-lg-4 ti-lg"></i>
+              {{-- <i class="ti ti-file-description ti-md me-2 me-lg-4 ti-lg"></i> --}}
               <span id="baslik" class="bottom-align">...</span>
             {{-- </a> --}}
           {{-- </div> --}}

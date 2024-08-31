@@ -30,7 +30,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::S3j3ZHASfz07apIa',
+            '_route' => 'generated::gfDhUsgEXLpwEzfU',
           ),
           1 => NULL,
           2 => 
@@ -140,7 +140,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::TDttewtjtHMUxgt8',
+            '_route' => 'generated::SDz3b4klyTKTjaH3',
           ),
           1 => NULL,
           2 => 
@@ -236,7 +236,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::N0EjG8683BABa46P',
+            '_route' => 'generated::50GhPKLBNXQqRHYv',
           ),
           1 => NULL,
           2 => 
@@ -309,7 +309,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::kPsV2aVnVhoQN84R',
+            '_route' => 'generated::AlX9TUTNAZ1TXwCf',
           ),
           1 => NULL,
           2 => 
@@ -439,7 +439,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::lojdXY2XvNOyoNoq',
+            '_route' => 'generated::xojgk5caSDa7O9SA',
           ),
           1 => NULL,
           2 => 
@@ -556,7 +556,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NUnHpg3FIX8erp6g',
+            '_route' => 'generated::CDkPZW2JoPxhKobj',
           ),
           1 => NULL,
           2 => 
@@ -576,7 +576,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::rkqf4aHahqdMZVf1',
+            '_route' => 'generated::ALCRgxPt5EQTuCNI',
           ),
           1 => NULL,
           2 => 
@@ -673,7 +673,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::rARlYzBZs9AsEc3E',
+            '_route' => 'generated::AIKulIIsGRTN3GW4',
           ),
           1 => NULL,
           2 => 
@@ -734,46 +734,6 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'kullanicilar',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/isemirleri' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'pages-isemirleri',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/table/test' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'test-al',
           ),
           1 => NULL,
           2 => 
@@ -903,6 +863,102 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/planlama/mamuller' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'planlama.mamuller',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/planlama/isemirleri' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'planlama.isemirleri',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/mamul-list' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'mamul-list.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'mamul-list.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/mamul-list/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'mamul-list.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/emir-list' => 
       array (
         0 => 
@@ -959,13 +1015,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/satis-list' => 
+      '/exportmamul/excel' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.index',
+            '_route' => 'generated::0mxKRqIkjPu1cHiX',
           ),
           1 => NULL,
           2 => 
@@ -978,11 +1034,34 @@ app('router')->setCompiledRoutes(
           5 => false,
           6 => NULL,
         ),
-        1 => 
+      ),
+      '/exportemir/excel' => 
+      array (
+        0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.store',
+            '_route' => 'generated::GmMk4kqyOm9ITgiw',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/emir/yukariat' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::esnlAyyf56eyWbZX',
           ),
           1 => NULL,
           2 => 
@@ -995,271 +1074,18 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/satis-list/create' => 
+      '/emir/asagiat' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.create',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/api/emirler' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'api.emirler',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stoklar/kalite2liste' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stoklar.kalite2liste',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok-list' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.index',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.store',
+            '_route' => 'generated::R9uPLqrFM0Zbvv6G',
           ),
           1 => NULL,
           2 => 
           array (
             'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok-list/create' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.create',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok/verial' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::ZYi5NeKsXfVXE1zd',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/export/excel' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::HL1piyUqmjZBZjq6',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stoklar/kalite2sliste' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stoklar.kalite2sliste',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok-lists' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.index',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.store',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok-lists/create' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.create',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/stok/verials' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::5N3neQzZnSIAJxer',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/export/excels' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::w9g1SUayhYaMISeU',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -1273,27 +1099,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NinWDCp4xTeSS4wn',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/satis/musteriSiparisleri' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'satis-musteriSiparisleri',
+            '_route' => 'generated::tANpyZ90GQs1QHNj',
           ),
           1 => NULL,
           2 => 
@@ -1310,7 +1116,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/em(?|ail/verify/([^/]++)/([^/]++)(*:73)|ir\\-list/([^/]++)(?|(*:100)|/edit(*:113)|(*:121)))|/team(?|s/([^/]++)(*:149)|\\-invitations/([^/]++)(*:179))|/l(?|ivewire/preview\\-file/([^/]++)(*:223)|ang/([^/]++)(*:243))|/user\\-list/([^/]++)(?|(*:275)|/edit(*:288)|(*:296))|/s(?|atis\\-list/([^/]++)(?|(*:332)|/edit(*:345)|(*:353))|tok\\-list(?|/([^/]++)(?|(*:386)|/edit(*:399)|(*:407))|s/([^/]++)(?|(*:429)|/edit(*:442)|(*:450)))))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/em(?|ail/verify/([^/]++)/([^/]++)(*:73)|ir\\-list/(?|([^/]++)(?|(*:103)|/edit(*:116)|(*:124))|mamulal/([^/]++)(*:149)))|/team(?|s/([^/]++)(*:177)|\\-invitations/([^/]++)(*:207))|/l(?|ivewire/preview\\-file/([^/]++)(*:251)|ang/([^/]++)(*:271))|/user\\-list/([^/]++)(?|(*:303)|/edit(*:316)|(*:324))|/mamul\\-list/([^/]++)(?|(*:357)|/edit(*:370)|(*:378)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1361,7 +1167,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      100 => 
+      103 => 
       array (
         0 => 
         array (
@@ -1384,7 +1190,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      113 => 
+      116 => 
       array (
         0 => 
         array (
@@ -1407,7 +1213,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      121 => 
+      124 => 
       array (
         0 => 
         array (
@@ -1455,6 +1261,29 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
+            '_route' => 'generated::ZefDiQHEBftKiFDe',
+          ),
+          1 => 
+          array (
+            0 => 'ISTKOD',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      177 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
             '_route' => 'teams.show',
           ),
           1 => 
@@ -1472,7 +1301,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      179 => 
+      207 => 
       array (
         0 => 
         array (
@@ -1495,7 +1324,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      223 => 
+      251 => 
       array (
         0 => 
         array (
@@ -1518,13 +1347,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      243 => 
+      271 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::KMh2aVknyb2Al2Ph',
+            '_route' => 'generated::FVL7wbZbmwc4yOAr',
           ),
           1 => 
           array (
@@ -1541,7 +1370,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      275 => 
+      303 => 
       array (
         0 => 
         array (
@@ -1564,7 +1393,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      288 => 
+      316 => 
       array (
         0 => 
         array (
@@ -1587,7 +1416,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      296 => 
+      324 => 
       array (
         0 => 
         array (
@@ -1629,17 +1458,17 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      332 => 
+      357 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.show',
+            '_route' => 'mamul-list.show',
           ),
           1 => 
           array (
-            0 => 'satis_list',
+            0 => 'mamul_list',
           ),
           2 => 
           array (
@@ -1652,17 +1481,17 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      345 => 
+      370 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.edit',
+            '_route' => 'mamul-list.edit',
           ),
           1 => 
           array (
-            0 => 'satis_list',
+            0 => 'mamul_list',
           ),
           2 => 
           array (
@@ -1675,17 +1504,17 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      353 => 
+      378 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'satis-list.update',
+            '_route' => 'mamul-list.update',
           ),
           1 => 
           array (
-            0 => 'satis_list',
+            0 => 'mamul_list',
           ),
           2 => 
           array (
@@ -1701,187 +1530,11 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'satis-list.destroy',
+            '_route' => 'mamul-list.destroy',
           ),
           1 => 
           array (
-            0 => 'satis_list',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      386 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.show',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      399 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.edit',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      407 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.update',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'PUT' => 0,
-            'PATCH' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-list.destroy',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      429 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.show',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      442 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.edit',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      450 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.update',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
-          ),
-          2 => 
-          array (
-            'PUT' => 0,
-            'PATCH' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'stok-lists.destroy',
-          ),
-          1 => 
-          array (
-            0 => 'stok_list',
+            0 => 'mamul_list',
           ),
           2 => 
           array (
@@ -1947,7 +1600,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::S3j3ZHASfz07apIa' => 
+    'generated::gfDhUsgEXLpwEzfU' => 
     array (
       'methods' => 
       array (
@@ -1970,7 +1623,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::S3j3ZHASfz07apIa',
+        'as' => 'generated::gfDhUsgEXLpwEzfU',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2217,7 +1870,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::TDttewtjtHMUxgt8' => 
+    'generated::SDz3b4klyTKTjaH3' => 
     array (
       'methods' => 
       array (
@@ -2239,7 +1892,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::TDttewtjtHMUxgt8',
+        'as' => 'generated::SDz3b4klyTKTjaH3',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2450,7 +2103,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::N0EjG8683BABa46P' => 
+    'generated::50GhPKLBNXQqRHYv' => 
     array (
       'methods' => 
       array (
@@ -2473,7 +2126,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::N0EjG8683BABa46P',
+        'as' => 'generated::50GhPKLBNXQqRHYv',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2605,7 +2258,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::kPsV2aVnVhoQN84R' => 
+    'generated::AlX9TUTNAZ1TXwCf' => 
     array (
       'methods' => 
       array (
@@ -2628,7 +2281,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::kPsV2aVnVhoQN84R',
+        'as' => 'generated::AlX9TUTNAZ1TXwCf',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2881,7 +2534,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::lojdXY2XvNOyoNoq' => 
+    'generated::xojgk5caSDa7O9SA' => 
     array (
       'methods' => 
       array (
@@ -2904,7 +2557,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::lojdXY2XvNOyoNoq',
+        'as' => 'generated::xojgk5caSDa7O9SA',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3192,7 +2845,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::NUnHpg3FIX8erp6g' => 
+    'generated::CDkPZW2JoPxhKobj' => 
     array (
       'methods' => 
       array (
@@ -3204,7 +2857,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
-        'as' => 'generated::NUnHpg3FIX8erp6g',
+        'as' => 'generated::CDkPZW2JoPxhKobj',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3220,7 +2873,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::rkqf4aHahqdMZVf1' => 
+    'generated::ALCRgxPt5EQTuCNI' => 
     array (
       'methods' => 
       array (
@@ -3232,7 +2885,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
-        'as' => 'generated::rkqf4aHahqdMZVf1',
+        'as' => 'generated::ALCRgxPt5EQTuCNI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3412,7 +3065,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::rARlYzBZs9AsEc3E' => 
+    'generated::AIKulIIsGRTN3GW4' => 
     array (
       'methods' => 
       array (
@@ -3426,8 +3079,8 @@ app('router')->setCompiledRoutes(
                     \\Illuminate\\Support\\Facades\\Event::dispatch(new \\Illuminate\\Foundation\\Events\\DiagnosingHealth);
 
                     return \\Illuminate\\Support\\Facades\\View::file(\'/Applications/XAMPP/xamppfiles/htdocs/Oft_Manager_25/vendor/laravel/framework/src/Illuminate/Foundation/Configuration\'.\'/../resources/health-up.blade.php\');
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000082a0000000000000000";}}',
-        'as' => 'generated::rARlYzBZs9AsEc3E',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000008240000000000000000";}}',
+        'as' => 'generated::AIKulIIsGRTN3GW4',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3560,87 +3213,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'pages-isemirleri' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'isemirleri',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@index',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'pages-isemirleri',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'test-al' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'table/test',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@TestAl',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@TestAl',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'test-al',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::KMh2aVknyb2Al2Ph' => 
+    'generated::FVL7wbZbmwc4yOAr' => 
     array (
       'methods' => 
       array (
@@ -3664,7 +3237,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::KMh2aVknyb2Al2Ph',
+        'as' => 'generated::FVL7wbZbmwc4yOAr',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4078,6 +3651,364 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'planlama.mamuller' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'planlama/mamuller',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@getMamuller',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@getMamuller',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'planlama.mamuller',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'planlama.isemirleri' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'planlama/isemirleri',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@getEmirler',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@getEmirler',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'planlama.isemirleri',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'mamul-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.index',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@index',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@index',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'mamul-list/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.create',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@create',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@create',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'mamul-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.store',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@store',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@store',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'mamul-list/{mamul_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.show',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@show',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@show',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'mamul-list/{mamul_list}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.edit',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@edit',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@edit',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'mamul-list/{mamul_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.update',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@update',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@update',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'mamul-list.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'mamul-list/{mamul_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'mamul-list.destroy',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@destroy',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@destroy',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'emir-list.index' => 
     array (
       'methods' => 
@@ -4096,8 +4027,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.index',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@index',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@index',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@index',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@index',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4136,8 +4067,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.create',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@create',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@create',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@create',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@create',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4175,8 +4106,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.store',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@store',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@store',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@store',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@store',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4215,8 +4146,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.show',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@show',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@show',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@show',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@show',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4255,8 +4186,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.edit',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@edit',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@edit',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@edit',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@edit',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4295,8 +4226,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.update',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@update',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@update',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@update',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@update',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4334,8 +4265,8 @@ app('router')->setCompiledRoutes(
           3 => 'verified',
         ),
         'as' => 'emir-list.destroy',
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@destroy',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@destroy',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@destroy',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@destroy',
         'namespace' => NULL,
         'prefix' => '/',
         'where' => 
@@ -4356,14 +4287,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'satis-list.index' => 
+    'generated::ZefDiQHEBftKiFDe' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'satis-list',
+      'uri' => 'emir-list/mamulal/{ISTKOD}',
       'action' => 
       array (
         'middleware' => 
@@ -4373,14 +4304,14 @@ app('router')->setCompiledRoutes(
           2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
           3 => 'verified',
         ),
-        'as' => 'satis-list.index',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@index',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@index',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@MamulAl',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@MamulAl',
         'namespace' => NULL,
-        'prefix' => '/',
+        'prefix' => '',
         'where' => 
         array (
         ),
+        'as' => 'generated::ZefDiQHEBftKiFDe',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4396,14 +4327,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'satis-list.create' => 
+    'generated::0mxKRqIkjPu1cHiX' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'satis-list/create',
+      'uri' => 'exportmamul/excel',
       'action' => 
       array (
         'middleware' => 
@@ -4413,14 +4344,14 @@ app('router')->setCompiledRoutes(
           2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
           3 => 'verified',
         ),
-        'as' => 'satis-list.create',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@create',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@create',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Mamuller@exportExcel',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Mamuller@exportExcel',
         'namespace' => NULL,
-        'prefix' => '/',
+        'prefix' => '',
         'where' => 
         array (
         ),
+        'as' => 'generated::0mxKRqIkjPu1cHiX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4436,13 +4367,53 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'satis-list.store' => 
+    'generated::GmMk4kqyOm9ITgiw' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'exportemir/excel',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@exportExcel',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@exportExcel',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::GmMk4kqyOm9ITgiw',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::esnlAyyf56eyWbZX' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'satis-list',
+      'uri' => 'emir/yukariat',
       'action' => 
       array (
         'middleware' => 
@@ -4452,213 +4423,14 @@ app('router')->setCompiledRoutes(
           2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
           3 => 'verified',
         ),
-        'as' => 'satis-list.store',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@store',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@store',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'satis-list.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'satis-list/{satis_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'satis-list.show',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@show',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@show',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'satis-list.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'satis-list/{satis_list}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'satis-list.edit',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@edit',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@edit',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'satis-list.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'satis-list/{satis_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'satis-list.update',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@update',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@update',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'satis-list.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'satis-list/{satis_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'satis-list.destroy',
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@destroy',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@destroy',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'api.emirler' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'api/emirler',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\pages\\IsEmirleri@getEmirler',
-        'controller' => 'App\\Http\\Controllers\\pages\\IsEmirleri@getEmirler',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@yukariAt',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@yukariAt',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'api.emirler',
+        'as' => 'generated::esnlAyyf56eyWbZX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4674,133 +4446,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'stoklar.kalite2liste' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stoklar/kalite2liste',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@getKalite2liste',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@getKalite2liste',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'stoklar.kalite2liste',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.index' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-list',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.index',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@index',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@index',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.create' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-list/create',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.create',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@create',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@create',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.store' => 
+    'generated::R9uPLqrFM0Zbvv6G' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'stok-list',
+      'uri' => 'emir/asagiat',
       'action' => 
       array (
         'middleware' => 
@@ -4810,213 +4462,14 @@ app('router')->setCompiledRoutes(
           2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
           3 => 'verified',
         ),
-        'as' => 'stok-list.store',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@store',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@store',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-list/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.show',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@show',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@show',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-list/{stok_list}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.edit',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@edit',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@edit',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'stok-list/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.update',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@update',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@update',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-list.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'stok-list/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-list.destroy',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@destroy',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@destroy',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::ZYi5NeKsXfVXE1zd' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok/verial',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@veriAl',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@veriAl',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Emirler@asagiAt',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Emirler@asagiAt',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::ZYi5NeKsXfVXE1zd',
+        'as' => 'generated::R9uPLqrFM0Zbvv6G',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5032,445 +4485,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::HL1piyUqmjZBZjq6' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'export/excel',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@exportExcel',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2Controller@exportExcel',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::HL1piyUqmjZBZjq6',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stoklar.kalite2sliste' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stoklar/kalite2sliste',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@getKalite2liste',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@getKalite2liste',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'stoklar.kalite2sliste',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.index' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-lists',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.index',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@index',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@index',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.create' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-lists/create',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.create',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@create',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@create',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.store' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'stok-lists',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.store',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@store',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@store',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.show' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-lists/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.show',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@show',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@show',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok-lists/{stok_list}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.edit',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@edit',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@edit',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'stok-lists/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.update',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@update',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@update',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'stok-lists.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'stok-lists/{stok_list}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'as' => 'stok-lists.destroy',
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@destroy',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@destroy',
-        'namespace' => NULL,
-        'prefix' => '/',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::5N3neQzZnSIAJxer' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'stok/verials',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@veriAl',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@veriAl',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::5N3neQzZnSIAJxer',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::w9g1SUayhYaMISeU' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'export/excels',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@exportExcel',
-        'controller' => 'App\\Http\\Controllers\\stoklar\\Kalite2sController@exportExcel',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::w9g1SUayhYaMISeU',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::NinWDCp4xTeSS4wn' => 
+    'generated::tANpyZ90GQs1QHNj' => 
     array (
       'methods' => 
       array (
@@ -5494,47 +4509,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::NinWDCp4xTeSS4wn',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'satis-musteriSiparisleri' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'satis/musteriSiparisleri',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth:sanctum',
-          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
-          3 => 'verified',
-        ),
-        'uses' => 'App\\Http\\Controllers\\satis\\SatisController@getUser',
-        'controller' => 'App\\Http\\Controllers\\satis\\SatisController@getUser',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'satis-musteriSiparisleri',
+        'as' => 'generated::tANpyZ90GQs1QHNj',
       ),
       'fallback' => false,
       'defaults' => 
