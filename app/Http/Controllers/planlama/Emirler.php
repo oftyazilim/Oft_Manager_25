@@ -68,21 +68,38 @@ class Emirler extends Controller
     $dir = $request->input('order.0.dir');
 
     $search = [];
+$istasyon = $request->input('grupSecimi');
 
     if (empty($request->input('search.value'))) {
-      $emirler = DB::table('OFTV_01_EMIRLERIS')->orderBy('URETIMSIRA', 'asc')->get();
+      $emirler = DB::table('OFTV_01_EMIRLERIS')->where('ISTKOD',  'LIKE', "%{$istasyon}%")->orderBy('URETIMSIRA', 'asc')->get();
     } else {
       $search = $request->input('search.value');
 
       $emirler = DB::table('OFTV_01_EMIRLERIS')
-        ->where('KOD', 'LIKE', "%{$search}%")
-        ->orWhere('TANIM', 'LIKE', "%{$search}%")
-        ->orWhere('ISTTANIM', 'LIKE', "%{$search}%")
-        ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
-        ->orWhere('DURUM', 'LIKE', "%{$search}%")
-        ->orWhere('KAYITTARIH', 'LIKE', "%{$search}%")
-        ->orWhere('ISTKOD', 'LIKE', "%{$search}%")->orderBy('URETIMSIRA', 'asc')
-        ->get();
+      ->where(function($query) use ($istasyon) {
+          $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
+      })
+      ->where(function($query) use ($search) {
+          $query->where('KOD', 'LIKE', "%{$search}%")
+                ->orWhere('TANIM', 'LIKE', "%{$search}%")
+                ->orWhere('ISTTANIM', 'LIKE', "%{$search}%")
+                ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+                ->orWhere('DURUM', 'LIKE', "%{$search}%")
+                ->orWhere('KAYITTARIH', 'LIKE', "%{$search}%");
+      })
+      ->orderBy('URETIMSIRA', 'asc')
+      ->get();
+
+      // $emirler = DB::table('OFTV_01_EMIRLERIS')
+      //   ->where('KOD', 'LIKE', "%{$search}%")
+      //   ->orWhere('TANIM', 'LIKE', "%{$search}%")
+      //   ->orWhere('ISTTANIM', 'LIKE', "%{$search}%")
+      //   ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+      //   ->orWhere('DURUM', 'LIKE', "%{$search}%")
+      //   ->orWhere('KAYITTARIH', 'LIKE', "%{$search}%")
+      //   ->orWhere('ISTKOD', 'LIKE', "%{$istasyon}%")
+      //   ->orderBy('URETIMSIRA', 'asc')
+      //   ->get();
     }
 
     $data = [];

@@ -1,6 +1,7 @@
 'use strict';
 import Swal from 'sweetalert2';
 import ExcelJS from 'exceljs';
+import DataTable from 'datatables.net-bs5';
 
 // // Datatable (jquery)
 $(function () {
@@ -39,6 +40,8 @@ $(function () {
     }
   });
 
+  var grupSecimi = '';
+  
   //   // Users datatable
   if (dt_table.length) {
     var dt_record = dt_table.DataTable({
@@ -53,7 +56,11 @@ $(function () {
         return ' Listelenen kayıt sayısı:   ' + end;
       },
       ajax: {
-        url: baseUrl + 'emir-list'
+        url: baseUrl + 'emir-list',
+        data: function(d) {
+          d.grupSecimi = grupSecimi; // Seçilen filtre değerini AJAX isteğine ekliyoruz
+          // Diğer gerekli parametreler de burada eklenebilir
+        }
       },
       columns: [
         // columns according to JSON
@@ -77,6 +84,23 @@ $(function () {
         { data: 'AKTIF' },
         { data: 'EYLEM' }
       ],
+      dom:
+        '<"row"' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start"B>>' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-5 gap-md-4 mt-n5 mt-md-0"f<"istasyon mb-6 mb-md-0">>' +
+        '>t' +
+        '<"row"' +
+        '<"col-sm-12 col-md-6"i>' +
+        '<"col-sm-12 col-md-6"p>' +
+        '>',
+      // '<"row"' +
+      // '<"col-md-2"<"ms-n2"l>>' +
+      // '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-6 mb-md-0 mt-n6 mt-md-0"fB>>' +
+      // '>t' +
+      // '<"row"' +
+      // '<"col-sm-12 col-md-6"i>' +
+      // '<"col-sm-12 col-md-6"p>' +
+      // '>',
       buttons: [
         {
           text: '<i class="ti ti-arrow-right me-0 me-sm-1 "></i><span class="d-none d-sm-inline-block">Excel</span>',
@@ -95,18 +119,10 @@ $(function () {
         }
       ],
       language: {
-        search: 'Ara:'
+        search: '',
+        searchPlaceholder: 'Ara'
       },
       order: [[8, 'asc']],
-      dom:
-        '<"row"' +
-        '<"col-md-2"<"ms-n2"l>>' +
-        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-6 mb-md-0 mt-n6 mt-md-0"fB>>' +
-        '>t' +
-        '<"row"' +
-        '<"col-sm-12 col-md-6"i>' +
-        '<"col-sm-12 col-md-6"p>' +
-        '>',
       columnDefs: [
         {
           //For Responsive
@@ -158,11 +174,11 @@ $(function () {
         },
         {
           targets: 6, //tanim
-          responsivePriority: 1,
+          responsivePriority: 1
         },
         {
           targets: 7, //mmlgrpkod
-          responsivePriority: 3,
+          responsivePriority: 3
         },
         {
           targets: 8, //planmiktar
@@ -175,7 +191,7 @@ $(function () {
           responsivePriority: 1
         },
         {
-          targets: 10,          // İlerleme
+          targets: 10, // İlerleme
           responsivePriority: 3,
           render: function (data, type, full, meta) {
             var $status_number = full['PROGRESS'];
@@ -220,6 +236,7 @@ $(function () {
         {
           targets: 14, //tarih
           responsivePriority: 1,
+          render: DataTable.render.date()
         },
         {
           targets: 15, //istkod
@@ -287,6 +304,31 @@ $(function () {
             return data ? $('<table class="table"/><tbody />').append(data) : false;
           }
         }
+      },
+      initComplete: function () {
+        // Adding role filter once table initialized
+        this.api()
+        .columns(15)
+        .every(function() {
+          var column = this;
+          var select = $(
+              '<select id="sss" class="form-select"><option value=""> Grup Seç </option></select>'
+            )
+            .appendTo('.istasyon')
+            .on('change', function() {
+              grupSecimi = $(this).val(); // Seçilen değeri değişkene atıyoruz
+              dt_record.draw(); // Tabloyu tekrar yüklüyoruz (AJAX isteği tetiklenir)
+            });
+
+          column
+            .data()
+            .unique()
+            .sort()
+            .each(function(d, j) {
+              select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+            });
+        });
+
       }
     });
   }
