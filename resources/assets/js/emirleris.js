@@ -12,6 +12,14 @@ $(function () {
     select4 = $('#ISTKOD'),
     offCanvasForm = $('#offcanvasAddRecord');
 
+  var myModalElement = document.getElementById('modalCenter');
+  var displayIcons = false;
+
+  var myModal = new bootstrap.Modal(myModalElement, {
+    backdrop: true,
+    keyboard: true
+  });
+
   if (select1.length) {
     var $this = select1;
     $this.wrap('<div class="position-relative"></div>').select2({
@@ -41,7 +49,7 @@ $(function () {
   });
 
   var grupSecimi = '';
-  
+
   //   // Users datatable
   if (dt_table.length) {
     var dt_record = dt_table.DataTable({
@@ -57,7 +65,7 @@ $(function () {
       },
       ajax: {
         url: baseUrl + 'emir-list',
-        data: function(d) {
+        data: function (d) {
           d.grupSecimi = grupSecimi; // Seçilen filtre değerini AJAX isteğine ekliyoruz
           // Diğer gerekli parametreler de burada eklenebilir
         }
@@ -93,14 +101,6 @@ $(function () {
         '<"col-sm-12 col-md-6"i>' +
         '<"col-sm-12 col-md-6"p>' +
         '>',
-      // '<"row"' +
-      // '<"col-md-2"<"ms-n2"l>>' +
-      // '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-6 mb-md-0 mt-n6 mt-md-0"fB>>' +
-      // '>t' +
-      // '<"row"' +
-      // '<"col-sm-12 col-md-6"i>' +
-      // '<"col-sm-12 col-md-6"p>' +
-      // '>',
       buttons: [
         {
           text: '<i class="ti ti-arrow-right me-0 me-sm-1 "></i><span class="d-none d-sm-inline-block">Excel</span>',
@@ -258,15 +258,21 @@ $(function () {
           // Actions
           targets: -1,
           searchable: false,
-          responsivePriority: 4,
+          responsivePriority: 2,
           orderable: false,
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center">' +
+              '<div class="d-flex align-items-center">' +
               `<i class="ti ti-edit edit-record" data-id="${full['ID']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddRecord" style="font-size: 20px; line-height:0.7; vertical-align: middle;"></i>` +
               `<i class="ti ti-trash delete-record" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>` +
-              `<i class="ti ti-arrow-up kaydir-yukari" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>` +
-              `<i class="ti ti-arrow-down kaydir-asagi" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>` +
+              (displayIcons
+                ? `<i class="ti ti-arrow-up kaydir-yukari" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>`
+                : '') +
+              (displayIcons
+                ? `<i class="ti ti-arrow-down kaydir-asagi" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>`
+                : '') +
+              `<i class="ti ti-settings uretim-gir" data-id="${full['ID']}" style="font-size: 20px; line-height: 0.7; vertical-align: middle;"></i>` +
               '</div>'
             );
           }
@@ -308,27 +314,29 @@ $(function () {
       initComplete: function () {
         // Adding role filter once table initialized
         this.api()
-        .columns(15)
-        .every(function() {
-          var column = this;
-          var select = $(
-              '<select id="sss" class="form-select"><option value=""> Grup Seç </option></select>'
-            )
-            .appendTo('.istasyon')
-            .on('change', function() {
-              grupSecimi = $(this).val(); // Seçilen değeri değişkene atıyoruz
-              dt_record.draw(); // Tabloyu tekrar yüklüyoruz (AJAX isteği tetiklenir)
-            });
+          .columns(16)
+          .every(function () {
+            var column = this;
+            var select = $('<select id="sss" class="form-select"><option value="">Tüm Gruplar</option></select>')
+              .appendTo('.istasyon')
+              .on('change', function () {
+                grupSecimi = $(this).val(); // Seçilen değeri değişkene atıyoruz
+                if (grupSecimi !== '') {
+                  displayIcons = true;
+                } else {
+                  displayIcons = false;
+                }
+                dt_record.draw(); // Tabloyu tekrar yüklüyoruz (AJAX isteği tetiklenir)
+              });
 
-          column
-            .data()
-            .unique()
-            .sort()
-            .each(function(d, j) {
-              select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
-            });
-        });
-
+            column
+              .data()
+              .unique()
+              .sort()
+              .each(function (d, j) {
+                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+              });
+          });
       }
     });
   }
@@ -637,7 +645,6 @@ $(function () {
 
   $(document).on('click', '.kaydir-yukari', function () {
     var temp_id = $(this).data('id');
-    // console.log(temp_id);
     $.ajax({
       url: '/emir/yukariat',
       type: 'POST',
@@ -655,9 +662,9 @@ $(function () {
       }
     });
   });
+
   $(document).on('click', '.kaydir-asagi', function () {
     var temp_id = $(this).data('id');
-    // console.log(temp_id);
     $.ajax({
       url: '/emir/asagiat',
       type: 'POST',
@@ -672,6 +679,66 @@ $(function () {
       },
       error: function () {
         alert('Bir hata oluştu.');
+      }
+    });
+  });
+
+  $(document).on('click', '.uretim-gir', function () {
+    var kayit_id = $(this).data('id');
+
+    $('#modalCenterTitle').html('Üretim Girişi');
+
+    $.get(`${baseUrl}emir-list\/${kayit_id}\/edit`, function (data) {
+      $('#rec_id').val(kayit_id);
+      $('#mamul').val(data[0].TANIM);
+      var today = new Date().toISOString().split('T')[0];
+      $('#TARIH').val(today);
+      document.getElementById('URETIMMIKTAR').focus();
+    });
+
+    myModal.show();
+
+    $(document).on('shown.bs.modal', '#modalCenter', function () {
+      document.getElementById('URETIMMIKTAR').focus();
+    });
+  });
+
+  $(document).on('click', '#btnKaydet', function () {
+    var id = $('#rec_id').val();
+    var mamul = $('#mamul').val();
+    var tarih = $('#TARIH').val();
+    var uretimMiktar = $('#URETIMMIKTAR').val();
+
+    // Check if required fields are filled
+    if (tarih === '' || uretimMiktar === '') {
+      alert('Lütfen tüm alanları doldurun.');
+      return;
+    }
+
+    // Construct the data object to send to the server
+    var formData = {
+      id: id,
+      mamul: mamul,
+      tarih: tarih,
+      uretim_miktar: uretimMiktar
+    };
+
+    // AJAX request to save the data
+    $.ajax({
+      url: `${baseUrl}emir/uretimkaydet`, // Your Laravel route to handle saving
+      method: 'POST',
+      data: formData,
+      success: function (response) {
+        if (response.success) {
+          // alert('Kayıt başarıyla yapıldı!');
+          $('#modalCenter').modal('hide'); // Hide the modal
+          dt_record.draw();
+        } else {
+          alert('Kayıt sırasında bir hata oluştu.');
+        }
+      },
+      error: function () {
+        alert('Sunucu hatası. Lütfen daha sonra tekrar deneyin.');
       }
     });
   });

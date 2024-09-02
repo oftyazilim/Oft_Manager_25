@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/exportemir/excel', [Emirler::class, 'exportExcel']);
   Route::post('/emir/yukariat', [Emirler::class, 'yukariAt']);
   Route::post('/emir/asagiat', [Emirler::class, 'asagiAt']);
-  // Route::post('/emir/istasyonsuz', [Emirler::class, 'asagiAt']);
+  Route::post('/emir/uretimkaydet', [Emirler::class, 'uretimKaydet']);
 
   // Dashboard
   Route::get('/dashboard/verial', [HomePage::class, 'veriAl']);

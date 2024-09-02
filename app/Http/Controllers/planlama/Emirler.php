@@ -22,8 +22,6 @@ class Emirler extends Controller
 
     $anaGrup = DB::table('OFTT_01_MAMULLER')->select('MMLGRPKOD')->distinct()->get();
     $stGrup = DB::table('OFTT_01_MAMULLER')->select('STGRPKOD')->distinct()->get();
-    // $sinif = DB::table('OFTT_01_MAMULLER')->select('SINIF')->distinct()->get();
-    // $tanims = DB::table('OFTT_01_MAMULLER')->select('ID', 'TANIM', 'MMLGRPKOD')->distinct()->get();
     $istasyon = DB::table('OFTT_01_ISTASYONLAR')->select('ID', 'TANIM')->distinct()->get();
 
     return view('content.planlama.emirleris', compact('anaGrup', 'stGrup', 'istasyon'));
@@ -68,27 +66,27 @@ class Emirler extends Controller
     $dir = $request->input('order.0.dir');
 
     $search = [];
-$istasyon = $request->input('grupSecimi');
+    $istasyon = $request->input('grupSecimi');
 
     if (empty($request->input('search.value'))) {
-      $emirler = DB::table('OFTV_01_EMIRLERIS')->where('ISTKOD',  'LIKE', "%{$istasyon}%")->orderBy('URETIMSIRA', 'asc')->get();
+      $emirler = DB::table('OFTV_01_EMIRLERIS')->where('ISTTANIM',  'LIKE', "%{$istasyon}%")->orderBy('URETIMSIRA', 'asc')->get();
     } else {
       $search = $request->input('search.value');
 
       $emirler = DB::table('OFTV_01_EMIRLERIS')
-      ->where(function($query) use ($istasyon) {
-          $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
-      })
-      ->where(function($query) use ($search) {
+        ->where(function ($query) use ($istasyon) {
+          $query->where('ISTTANIM',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
+        })
+        ->where(function ($query) use ($search) {
           $query->where('KOD', 'LIKE', "%{$search}%")
-                ->orWhere('TANIM', 'LIKE', "%{$search}%")
-                ->orWhere('ISTTANIM', 'LIKE', "%{$search}%")
-                ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
-                ->orWhere('DURUM', 'LIKE', "%{$search}%")
-                ->orWhere('KAYITTARIH', 'LIKE', "%{$search}%");
-      })
-      ->orderBy('URETIMSIRA', 'asc')
-      ->get();
+            ->orWhere('TANIM', 'LIKE', "%{$search}%")
+            ->orWhere('ISTTANIM', 'LIKE', "%{$search}%")
+            ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+            ->orWhere('DURUM', 'LIKE', "%{$search}%")
+            ->orWhere('KAYITTARIH', 'LIKE', "%{$search}%");
+        })
+        ->orderBy('URETIMSIRA', 'asc')
+        ->get();
 
       // $emirler = DB::table('OFTV_01_EMIRLERIS')
       //   ->where('KOD', 'LIKE', "%{$search}%")
@@ -279,6 +277,7 @@ $istasyon = $request->input('grupSecimi');
 
     // Önceki kaydı bul
     $previousRecord = Emir::where('URETIMSIRA', '<', $currentRecord->URETIMSIRA)
+    ->where('ISTASYONID',  $currentRecord->ISTASYONID)
       ->orderBy('URETIMSIRA', 'desc')
       ->first();
 
@@ -313,7 +312,8 @@ $istasyon = $request->input('grupSecimi');
 
     // Önceki kaydı bul
     $nextRecord = Emir::where('URETIMSIRA', '>', $currentRecord->URETIMSIRA)
-      ->orderBy('URETIMSIRA', 'asc')
+    ->where('ISTASYONID', $currentRecord->ISTASYONID)
+    ->orderBy('URETIMSIRA', 'asc')
       ->first();
 
     if (!$nextRecord) {
@@ -351,5 +351,27 @@ $istasyon = $request->input('grupSecimi');
     }
 
     return response()->json(['success' => true]);
+  }
+
+  public function uretimKaydet(Request $request)
+  {
+    $kayitid = (int)$request->id;
+    $operator = User::where('name', Auth::user()->name)->select('id')->first();
+    $miktar = (int)$request->uretim_miktar;
+
+    if ($operator) {
+      $operatorID = $operator->id;
+    } else {
+      $operatorID = null;
+    }
+
+    $emir = Emir::find($kayitid);
+    try {
+      $emir->URETIMMIKTAR += $miktar;
+      $emir->save();
+      return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+      return response()->json(['success' => false, 'message' => $e->getMessage()]);
+    }
   }
 }
