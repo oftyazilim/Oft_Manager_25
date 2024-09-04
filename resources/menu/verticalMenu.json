@@ -20,6 +20,11 @@
           "url": "planlama/mamuller",
           "name": "Mamul Kartları",
           "slug": "planlama-mamuller"
+        },
+        {
+          "url": "planlama/uretimler",
+          "name": "Üretim Girişleri",
+          "slug": "planlama-uretimler"
         }
       ]
     },

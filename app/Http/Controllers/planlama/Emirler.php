@@ -4,6 +4,7 @@ namespace App\Http\Controllers\planlama;
 
 use App\Http\Controllers\Controller;
 use App\Models\Emir;
+use App\Models\StokHrkt;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,6 @@ use function Laravel\Prompts\search;
 
 class Emirler extends Controller
 {
-
   public function getEmirler()
   {
     // $emirler = DB::table('OFTV_01_EMIRLERIS')->get();
@@ -365,10 +365,29 @@ class Emirler extends Controller
       $operatorID = null;
     }
 
+    // $mamultemp = Emir::where('ID', $kayitid)
+    //   ->where('KOD', $request->TANIM)
+    //   ->where('SILINDI', 0)
+    //   ->select('ID', 'TANIM', 'MMLGRPKOD', 'STGRPKOD')
+    //   ->first();
+
     $emir = Emir::find($kayitid);
     try {
       $emir->URETIMMIKTAR += $miktar;
       $emir->save();
+      $hrkt = StokHrkt::create(
+        [
+          'TUR' => 'Üretimden Giriş',
+          'STOKID' => $emir->URUNID,
+          'ISTASYONID' => $emir->ISTASYONID,
+          'ISEMRIID' => $kayitid,
+          'MIKTAR' => $miktar,
+          'OLUSTURANID' => $operatorID,
+          'URETIMTARIH' =>  $request->tarih,
+          'KAYITTARIH' =>  now(),
+          'NOTLAR' =>  $request->notlar,
+        ]
+      );
       return response()->json(['success' => true]);
     } catch (\Exception $e) {
       return response()->json(['success' => false, 'message' => $e->getMessage()]);

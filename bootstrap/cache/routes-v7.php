@@ -30,7 +30,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ihxclAIhQRD379Aq',
+            '_route' => 'generated::pSS343Tzq7Bgevfq',
           ),
           1 => NULL,
           2 => 
@@ -140,7 +140,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::BsRMnChv9aC4FWlZ',
+            '_route' => 'generated::WCLhwiQf0Z8Nv7aE',
           ),
           1 => NULL,
           2 => 
@@ -236,7 +236,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OwHO3zZ4Jw8OiDS8',
+            '_route' => 'generated::xjlZJDqT4TEZ9BHC',
           ),
           1 => NULL,
           2 => 
@@ -309,7 +309,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::o55m6fJk105VTndR',
+            '_route' => 'generated::szYXOaNZonu5nljQ',
           ),
           1 => NULL,
           2 => 
@@ -439,7 +439,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::L2T5fVpeBZ7qqEVa',
+            '_route' => 'generated::SO9renuE8UzzjLRa',
           ),
           1 => NULL,
           2 => 
@@ -556,7 +556,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::NNCfqU0dMHPU0SL7',
+            '_route' => 'generated::7P3IEW3MQt6SHmv4',
           ),
           1 => NULL,
           2 => 
@@ -576,7 +576,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ZQVGJ3qdtknD5ACZ',
+            '_route' => 'generated::d1LEn2Mso8AakAxv',
           ),
           1 => NULL,
           2 => 
@@ -673,7 +673,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Bg4fhABmPMjljeu6',
+            '_route' => 'generated::uojAZ2xgYmvSJ5ei',
           ),
           1 => NULL,
           2 => 
@@ -883,6 +883,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/planlama/uretimler' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'planlama.uretimler',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/planlama/isemirleri' => 
       array (
         0 => 
@@ -1015,13 +1035,69 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/uretim-list' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/uretim-list/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/exportmamul/excel' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::WULAzEav5qXTPRdR',
+            '_route' => 'generated::bVYH5CehGva1AzZW',
           ),
           1 => NULL,
           2 => 
@@ -1041,7 +1117,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CRoiuRCagYb0cpgD',
+            '_route' => 'generated::Ofu9rHHiO3bOakUx',
           ),
           1 => NULL,
           2 => 
@@ -1061,7 +1137,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::gKQnT5KihaHb7jg2',
+            '_route' => 'generated::CGwVhtZIEeCZ8O59',
           ),
           1 => NULL,
           2 => 
@@ -1080,7 +1156,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pAfjCOzCS7PjF6L0',
+            '_route' => 'generated::Iw0jLJlvipVDzC6i',
           ),
           1 => NULL,
           2 => 
@@ -1099,7 +1175,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::LEUkjIvnqXtglrL3',
+            '_route' => 'generated::SUSSVH31JAbMNb06',
           ),
           1 => NULL,
           2 => 
@@ -1118,7 +1194,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1ShA8VuhbhUkvKbW',
+            '_route' => 'generated::3jwsBlbhE18wq2dc',
           ),
           1 => NULL,
           2 => 
@@ -1135,7 +1211,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/em(?|ail/verify/([^/]++)/([^/]++)(*:73)|ir\\-list/(?|([^/]++)(?|(*:103)|/edit(*:116)|(*:124))|mamulal/([^/]++)(*:149)))|/team(?|s/([^/]++)(*:177)|\\-invitations/([^/]++)(*:207))|/l(?|ivewire/preview\\-file/([^/]++)(*:251)|ang/([^/]++)(*:271))|/user\\-list/([^/]++)(?|(*:303)|/edit(*:316)|(*:324))|/mamul\\-list/([^/]++)(?|(*:357)|/edit(*:370)|(*:378)))/?$}sDu',
+      0 => '{^(?|/reset\\-password/([^/]++)(*:32)|/em(?|ail/verify/([^/]++)/([^/]++)(*:73)|ir\\-list/(?|([^/]++)(?|(*:103)|/edit(*:116)|(*:124))|mamulal/([^/]++)(*:149)))|/team(?|s/([^/]++)(*:177)|\\-invitations/([^/]++)(*:207))|/l(?|ivewire/preview\\-file/([^/]++)(*:251)|ang/([^/]++)(*:271))|/u(?|ser\\-list/([^/]++)(?|(*:306)|/edit(*:319)|(*:327))|retim\\-list/([^/]++)(?|(*:359)|/edit(*:372)|(*:380)))|/mamul\\-list/([^/]++)(?|(*:414)|/edit(*:427)|(*:435)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1280,7 +1356,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::s7ROkPvmuuPp8s8s',
+            '_route' => 'generated::bnvcuNikb3G3J4ih',
           ),
           1 => 
           array (
@@ -1372,7 +1448,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::zkY5viUwIxrZgWtA',
+            '_route' => 'generated::Rkl7R1b5EBBwvpHc',
           ),
           1 => 
           array (
@@ -1389,7 +1465,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      303 => 
+      306 => 
       array (
         0 => 
         array (
@@ -1412,7 +1488,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      316 => 
+      319 => 
       array (
         0 => 
         array (
@@ -1435,7 +1511,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      324 => 
+      327 => 
       array (
         0 => 
         array (
@@ -1477,7 +1553,95 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      357 => 
+      359 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.show',
+          ),
+          1 => 
+          array (
+            0 => 'uretim_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      372 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.edit',
+          ),
+          1 => 
+          array (
+            0 => 'uretim_list',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      380 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.update',
+          ),
+          1 => 
+          array (
+            0 => 'uretim_list',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'uretim-list.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'uretim_list',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      414 => 
       array (
         0 => 
         array (
@@ -1500,7 +1664,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      370 => 
+      427 => 
       array (
         0 => 
         array (
@@ -1523,7 +1687,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      378 => 
+      435 => 
       array (
         0 => 
         array (
@@ -1619,7 +1783,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ihxclAIhQRD379Aq' => 
+    'generated::pSS343Tzq7Bgevfq' => 
     array (
       'methods' => 
       array (
@@ -1642,7 +1806,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ihxclAIhQRD379Aq',
+        'as' => 'generated::pSS343Tzq7Bgevfq',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1889,7 +2053,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::BsRMnChv9aC4FWlZ' => 
+    'generated::WCLhwiQf0Z8Nv7aE' => 
     array (
       'methods' => 
       array (
@@ -1911,7 +2075,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::BsRMnChv9aC4FWlZ',
+        'as' => 'generated::WCLhwiQf0Z8Nv7aE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2122,7 +2286,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OwHO3zZ4Jw8OiDS8' => 
+    'generated::xjlZJDqT4TEZ9BHC' => 
     array (
       'methods' => 
       array (
@@ -2145,7 +2309,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OwHO3zZ4Jw8OiDS8',
+        'as' => 'generated::xjlZJDqT4TEZ9BHC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2277,7 +2441,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::o55m6fJk105VTndR' => 
+    'generated::szYXOaNZonu5nljQ' => 
     array (
       'methods' => 
       array (
@@ -2300,7 +2464,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::o55m6fJk105VTndR',
+        'as' => 'generated::szYXOaNZonu5nljQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2553,7 +2717,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::L2T5fVpeBZ7qqEVa' => 
+    'generated::SO9renuE8UzzjLRa' => 
     array (
       'methods' => 
       array (
@@ -2576,7 +2740,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::L2T5fVpeBZ7qqEVa',
+        'as' => 'generated::SO9renuE8UzzjLRa',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2864,7 +3028,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::NNCfqU0dMHPU0SL7' => 
+    'generated::7P3IEW3MQt6SHmv4' => 
     array (
       'methods' => 
       array (
@@ -2876,7 +3040,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@returnJavaScriptAsFile',
-        'as' => 'generated::NNCfqU0dMHPU0SL7',
+        'as' => 'generated::7P3IEW3MQt6SHmv4',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2892,7 +3056,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ZQVGJ3qdtknD5ACZ' => 
+    'generated::d1LEn2Mso8AakAxv' => 
     array (
       'methods' => 
       array (
@@ -2904,7 +3068,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
         'controller' => 'Livewire\\Mechanisms\\FrontendAssets\\FrontendAssets@maps',
-        'as' => 'generated::ZQVGJ3qdtknD5ACZ',
+        'as' => 'generated::d1LEn2Mso8AakAxv',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3084,7 +3248,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Bg4fhABmPMjljeu6' => 
+    'generated::uojAZ2xgYmvSJ5ei' => 
     array (
       'methods' => 
       array (
@@ -3098,8 +3262,8 @@ app('router')->setCompiledRoutes(
                     \\Illuminate\\Support\\Facades\\Event::dispatch(new \\Illuminate\\Foundation\\Events\\DiagnosingHealth);
 
                     return \\Illuminate\\Support\\Facades\\View::file(\'/Applications/XAMPP/xamppfiles/htdocs/Oft_Manager_25/vendor/laravel/framework/src/Illuminate/Foundation/Configuration\'.\'/../resources/health-up.blade.php\');
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000008240000000000000000";}}',
-        'as' => 'generated::Bg4fhABmPMjljeu6',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000008270000000000000000";}}',
+        'as' => 'generated::uojAZ2xgYmvSJ5ei',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3232,7 +3396,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::zkY5viUwIxrZgWtA' => 
+    'generated::Rkl7R1b5EBBwvpHc' => 
     array (
       'methods' => 
       array (
@@ -3256,7 +3420,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::zkY5viUwIxrZgWtA',
+        'as' => 'generated::Rkl7R1b5EBBwvpHc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3695,6 +3859,46 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'planlama.mamuller',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'planlama.uretimler' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'planlama/uretimler',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@getListe',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@getListe',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'planlama.uretimler',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4306,7 +4510,285 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::s7ROkPvmuuPp8s8s' => 
+    'uretim-list.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'uretim-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.index',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@index',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@index',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'uretim-list/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.create',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@create',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@create',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'uretim-list',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.store',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@store',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@store',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'uretim-list/{uretim_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.show',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@show',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@show',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'uretim-list/{uretim_list}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.edit',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@edit',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@edit',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'uretim-list/{uretim_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.update',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@update',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@update',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'uretim-list.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'uretim-list/{uretim_list}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'as' => 'uretim-list.destroy',
+        'uses' => 'App\\Http\\Controllers\\planlama\\Uretimler@destroy',
+        'controller' => 'App\\Http\\Controllers\\planlama\\Uretimler@destroy',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::bnvcuNikb3G3J4ih' => 
     array (
       'methods' => 
       array (
@@ -4330,7 +4812,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::s7ROkPvmuuPp8s8s',
+        'as' => 'generated::bnvcuNikb3G3J4ih',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4346,7 +4828,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::WULAzEav5qXTPRdR' => 
+    'generated::bVYH5CehGva1AzZW' => 
     array (
       'methods' => 
       array (
@@ -4370,7 +4852,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::WULAzEav5qXTPRdR',
+        'as' => 'generated::bVYH5CehGva1AzZW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4386,7 +4868,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::CRoiuRCagYb0cpgD' => 
+    'generated::Ofu9rHHiO3bOakUx' => 
     array (
       'methods' => 
       array (
@@ -4410,7 +4892,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::CRoiuRCagYb0cpgD',
+        'as' => 'generated::Ofu9rHHiO3bOakUx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4426,7 +4908,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::gKQnT5KihaHb7jg2' => 
+    'generated::CGwVhtZIEeCZ8O59' => 
     array (
       'methods' => 
       array (
@@ -4449,7 +4931,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::gKQnT5KihaHb7jg2',
+        'as' => 'generated::CGwVhtZIEeCZ8O59',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4465,7 +4947,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pAfjCOzCS7PjF6L0' => 
+    'generated::Iw0jLJlvipVDzC6i' => 
     array (
       'methods' => 
       array (
@@ -4488,7 +4970,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::pAfjCOzCS7PjF6L0',
+        'as' => 'generated::Iw0jLJlvipVDzC6i',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4504,7 +4986,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::LEUkjIvnqXtglrL3' => 
+    'generated::SUSSVH31JAbMNb06' => 
     array (
       'methods' => 
       array (
@@ -4527,7 +5009,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::LEUkjIvnqXtglrL3',
+        'as' => 'generated::SUSSVH31JAbMNb06',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4543,7 +5025,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::1ShA8VuhbhUkvKbW' => 
+    'generated::3jwsBlbhE18wq2dc' => 
     array (
       'methods' => 
       array (
@@ -4567,7 +5049,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::1ShA8VuhbhUkvKbW',
+        'as' => 'generated::3jwsBlbhE18wq2dc',
       ),
       'fallback' => false,
       'defaults' => 

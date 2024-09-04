@@ -690,7 +690,10 @@ $(function () {
 
     $.get(`${baseUrl}emir-list\/${kayit_id}\/edit`, function (data) {
       $('#rec_id').val(kayit_id);
+      $('#urun_id').val(data[0].ID);
       $('#mamul').val(data[0].TANIM);
+      $('#URETIMMIKTAR').val('');
+      $('#NOTLAR1').val('');
       var today = new Date().toISOString().split('T')[0];
       $('#TARIH').val(today);
       document.getElementById('URETIMMIKTAR').focus();
@@ -708,6 +711,7 @@ $(function () {
     var mamul = $('#mamul').val();
     var tarih = $('#TARIH').val();
     var uretimMiktar = $('#URETIMMIKTAR').val();
+    var notlar = $('#NOTLAR1').val();
 
     // Check if required fields are filled
     if (tarih === '' || uretimMiktar === '') {
@@ -720,6 +724,7 @@ $(function () {
       id: id,
       mamul: mamul,
       tarih: tarih,
+      notlar: notlar,
       uretim_miktar: uretimMiktar
     };
 

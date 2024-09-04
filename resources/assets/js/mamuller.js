@@ -92,7 +92,8 @@ $(function () {
       ],
       order: [[7, 'desc']],
       language: {
-        search: "Ara:" // "Search" metnini "Ara" olarak değiştirir
+        search: '',
+        searchPlaceholder: 'Ara',
       },
       dom:
         '<"row"' +
