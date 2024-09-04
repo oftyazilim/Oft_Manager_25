@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\planlama;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Emir;
 use App\Models\StokHrkt;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class Uretimler extends Controller
 {
 
-  public function getListe() {
+  public function getListe()
+  {
     return view('content.planlama.uretim');
   }
 
@@ -41,24 +47,24 @@ class Uretimler extends Controller
 
     if (empty($request->input('search.value'))) {
       $kayitlar = DB::table('OFTV_01_STOKHRKT')
-      ->where('ISTKOD',  'LIKE', "%{$istasyon}%")
-      ->orderBy('ID', 'desc')
+        ->where('ISTKOD',  'LIKE', "%{$istasyon}%")
+        ->orderBy('ID', 'desc')
         ->get();
     } else {
       $search = $request->input('search.value');
 
       $kayitlar = DB::table('OFTV_01_STOKHRKT')
-      ->where(function ($query) use ($istasyon) {
-        $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
-      })
-      ->where(function ($query) use ($search) {
-        $query->where('KOD', 'LIKE', "%{$search}%")
-          ->orWhere('TANIM', 'LIKE', "%{$search}%")
-          ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
-          ->orWhere('URETIMTARIH', 'LIKE', "%{$search}%");
-      })
-      ->orderBy('ID', 'desc')
-      ->get();
+        ->where(function ($query) use ($istasyon) {
+          $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
+        })
+        ->where(function ($query) use ($search) {
+          $query->where('KOD', 'LIKE', "%{$search}%")
+            ->orWhere('TANIM', 'LIKE', "%{$search}%")
+            ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+            ->orWhere('URETIMTARIH', 'LIKE', "%{$search}%");
+        })
+        ->orderBy('ID', 'desc')
+        ->get();
     }
 
     $data = [];
@@ -120,7 +126,8 @@ class Uretimler extends Controller
 
   public function edit(string $id)
   {
-    //
+    $uretimler = DB::table('OFTV_01_STOKHRKT')->where('ID', $id)->get();
+    return response()->json($uretimler);
   }
 
 
@@ -132,6 +139,63 @@ class Uretimler extends Controller
 
   public function destroy(string $id)
   {
-    //
+    $kayitid = (int)$id;
+    $operator = User::where('name', Auth::user()->name)->select('id')->first();
+
+    if ($operator) {
+      $operatorID = $operator->id;
+    } else {
+      $operatorID = null;
+    }
+
+    $hrkt = StokHrkt::find($kayitid)->select('ISEMRIID', 'MIKTAR')->first();
+    $emir = Emir::find(33);
+    $emir->URETIMMIKTAR -= (int)$hrkt->MIKTAR;
+    $emir->save();
+
+    $hrkte = StokHrkt::updateOrCreate(
+      ['ID' => $kayitid],
+      [
+        'SILINDI' => 1,
+        'SILENID' => $operatorID,
+        'SILINMETARIH' => now(),
+      ]
+    );
+
+    return response()->json($kayitid);
+  }
+
+
+  public function uretimKaydet(Request $request)
+  {
+    $kayitid = (int)$request->id;
+    $operator = User::where('name', Auth::user()->name)->select('id')->first();
+    $miktar = (int)$request->uretim_miktar -(int)$request->miktarTemp;
+
+    if ($operator) {
+      $operatorID = $operator->id;
+    } else {
+      $operatorID = null;
+    }
+
+
+    $emir = Emir::find($request->isemriid);
+    try {
+
+      $emir->URETIMMIKTAR += (int)$request->uretim_miktar -(int)$request->miktarTemp;
+      $emir->save();
+
+      $hrkt = StokHrkt::find($kayitid);
+      $hrkt->MIKTAR = (int)$request->uretim_miktar;
+      $hrkt->DUZENLEYENID = $operatorID;
+      $hrkt->URETIMTARIH = $request->tarih;
+      $hrkt->DUZENTARIH = now();
+      $hrkt->NOTLAR = $request->notlar;
+      $hrkt->save();
+
+      return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+      return response()->json(['success' => false, 'message' => $e->getMessage()]);
+    }
   }
 }

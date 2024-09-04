@@ -1,4 +1,3 @@
-
 'use strict';
 import Swal from 'sweetalert2';
 import ExcelJS from 'exceljs';
@@ -8,7 +7,7 @@ import DataTable from 'datatables.net-bs5';
 $(function () {
   document.getElementById('baslik').innerHTML = 'Üretim Girişleri';
 
-  var dt_table = $('.datatables-uretimler')
+  var dt_table = $('.datatables-uretimler');
   var myModalElement = document.getElementById('modalCenter');
   var myModal = new bootstrap.Modal(myModalElement, {
     backdrop: true,
@@ -31,9 +30,9 @@ $(function () {
       info: true,
       scrollCollapse: false,
       scrollY: '65vh',
-      infoCallback: function(settings, start, end, max, total, pre) {
+      infoCallback: function (settings, start, end, max, total, pre) {
         return ' Listelenen kayıt sayısı:   ' + end;
-    },
+      },
       ajax: {
         url: baseUrl + 'uretim-list',
         data: function (d) {
@@ -71,7 +70,7 @@ $(function () {
           searchable: false,
           orderable: false,
           targets: 0,
-          visible:false,
+          visible: false,
           render: function (data, type, full, meta) {
             return `<span>${full.fake_id}</span>`;
           }
@@ -79,19 +78,19 @@ $(function () {
         {
           // ISTKOD
           targets: 1,
-          responsivePriority: 4,
+          responsivePriority: 4
         },
         {
           // ISEMRIID
           targets: 2,
-          responsivePriority: 4,
+          responsivePriority: 4
         },
         {
           // STOKID
           targets: 3,
           responsivePriority: 4,
           className: 'dt-body-right',
-          visible: false,
+          visible: false
         },
         {
           // KOD
@@ -106,8 +105,7 @@ $(function () {
         {
           // MMLGRPKOD
           targets: 6,
-          responsivePriority: 4,
-
+          responsivePriority: 4
         },
         {
           // MIKTAR
@@ -133,7 +131,7 @@ $(function () {
           targets: 10,
           responsivePriority: 4,
           className: 'dt-body-right',
-          visible: true,
+          visible: true
         },
         {
           // Actions
@@ -144,23 +142,23 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center gap-50">' +
-              `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddUser"><i class="ti ti-edit"></i></button>` +
-              `<button class="btn btn-sm btn-icon delete-record btn-text-secondary rounded-pill waves-effect" data-id="${full['id']}"><i class="ti ti-trash"></i></button>` +
+              `<button class="btn btn-sm btn-icon edit-record btn-text-secondary rounded-pill waves-effect" data-id="${full['ID']}" data-bs-target="#modalCenter"><i class="ti ti-edit"></i></button>` +
+              `<button class="btn btn-sm btn-icon delete-record btn-text-secondary rounded-pill waves-effect" data-id="${full['ID']}"><i class="ti ti-trash"></i></button>` +
               '</div>'
             );
           }
         }
       ],
       order: [[10, 'desc']],
-       dom:
-       '<"row"' +
-       '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start"B>>' +
-       '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-5 gap-md-4 mt-n5 mt-md-0"f<"istasyon mb-6 mb-md-0">>' +
-       '>t' +
-       '<"row"' +
-       '<"col-sm-12 col-md-6"i>' +
-       '<"col-sm-12 col-md-6"p>' +
-       '>',
+      dom:
+        '<"row"' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start"B>>' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-5 gap-md-4 mt-n5 mt-md-0"f<"istasyon mb-6 mb-md-0">>' +
+        '>t' +
+        '<"row"' +
+        '<"col-sm-12 col-md-6"i>' +
+        '<"col-sm-12 col-md-6"p>' +
+        '>',
       language: {
         search: '',
         searchPlaceholder: 'Ara'
@@ -172,14 +170,6 @@ $(function () {
           className: 'export btn btn-succes waves-effect waves-light ms-2 me-2',
           attr: {
             'data-bs-target': '#exportExcelButton'
-          }
-        },
-        {
-          text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Kayıt Ekle</span>',
-          className: 'add-new btn btn-primary waves-effect waves-light',
-          attr: {
-            'data-bs-toggle': 'offcanvas',
-            'data-bs-target': '#offcanvasAddRecord'
           }
         }
       ],
@@ -240,179 +230,140 @@ $(function () {
     });
   }
 
-  // // Delete Record
-  // $(document).on('click', '.delete-record', function () {
-  //   alert($(this).data('id'));
-  //   var user_id = $(this).data('id'),
-  //     dtrModal = $('.dtr-bs-modal.show');
+  // Delete Record
+  $(document).on('click', '.delete-record', function () {
+    var temp_id = $(this).data('id');
 
-  //   // hide responsive modal in small screen
-  //   if (dtrModal.length) {
-  //     dtrModal.modal('hide');
-  //   }
+    // sweetalert for confirmation of delete
+    Swal.fire({
+      title: 'Emin misiniz?',
+      text: 'Bu işlemi geri alamayacaksınız!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Evet, Silebilirsin!',
+      cancelButtonText: 'Vazgeç',
+      customClass: {
+        confirmButton: 'btn btn-primary me-3',
+        cancelButton: 'btn btn-label-secondary'
+      },
+      buttonsStyling: false
+    }).then(function (result) {
+      if (result.value) {
+        // delete the data
+        $.ajax({
+          type: 'DELETE',
+          url: `${baseUrl}uretim-list/${temp_id}`,
+          success: function () {
+            dt_record.draw();
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
 
-  //   // sweetalert for confirmation of delete
-  //   Swal.fire({
-  //     title: 'Emin misiniz?',
-  //     text: 'Bu işlemi geri alamayacaksınız!',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Evet, Silebilirsin!',
-  //     cancelButtonText: 'Vazgeç',
-  //     customClass: {
-  //       confirmButton: 'btn btn-primary me-3',
-  //       cancelButton: 'btn btn-label-secondary'
-  //     },
-  //     buttonsStyling: false
-  //   }).then(function (result) {
-  //     if (result.value) {
-  //       // delete the data
-  //       $.ajax({
-  //         type: 'DELETE',
-  //         url: `${baseUrl}user-list/${user_id}`,
-  //         success: function () {
-  //           dt_user.draw();
-  //         },
-  //         error: function (error) {
-  //           console.log(error);
-  //         }
-  //       });
-
-  //       // success sweetalert
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: 'Silindi!',
-  //         text: 'Kullanıcı silindi',
-  //         confirmButtonText: 'Kapat',
-  //         customClass: {
-  //           confirmButton: 'btn btn-success'
-  //         }
-  //       });
-  //     } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //       Swal.fire({
-  //         title: 'Vazgeçildi',
-  //         text: 'Kullanıcı silinmedi!',
-  //         icon: 'error',
-  //         confirmButtonText: 'Kapat',
-  //         customClass: {
-  //           confirmButton: 'btn btn-success'
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
+        // success sweetalert
+        Swal.fire({
+          icon: 'success',
+          title: 'Silindi!',
+          text: 'Kullanıcı silindi',
+          confirmButtonText: 'Kapat',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: 'Vazgeçildi',
+          text: 'Kullanıcı silinmedi!',
+          icon: 'error',
+          confirmButtonText: 'Kapat',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+      }
+    });
+  });
 
   // // edit record
-  // $(document).on('click', '.edit-record', function () {
-  //   var user_id = $(this).data('id'),
-  //     dtrModal = $('.dtr-bs-modal.show');
+  $(document).on('click', '.edit-record', function () {
+    var kayit_id = $(this).data('id');
 
-  //   // hide responsive modal in small screen
-  //   if (dtrModal.length) {
-  //     dtrModal.modal('hide');
-  //   }
+    $('#modalCenterTitle').html('Üretim Düzeltme');
 
-  //   // changing the title of offcanvas
-  //   $('#offcanvasAddUserLabel').html('Edit User');
+    $.get(`${baseUrl}uretim-list\/${kayit_id}\/edit`, function (data) {
+      $('#rec_id').val(kayit_id);
+      $('#isemriid').val(data[0].ISEMRIID);
+      $('#urun_id').val(data[0].STOKID);
+      $('#mamul').val(data[0].TANIM);
+      $('#URETIMMIKTAR').val(data[0].MIKTAR);
+      $('#miktarTemp').val(data[0].MIKTAR);
+      $('#NOTLAR1').val(data[0].NOTLAR);
+      var dateParts = data[0].URETIMTARIH.substring(0, 10).split('-');
+      var dateObject = new Date(Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2]));
+      var dateTemp = dateObject.toISOString().split('T')[0];
+      $('#TARIH').val(dateTemp);
+      document.getElementById('URETIMMIKTAR').focus();
+    });
 
-  //   // get data
-  //   $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
-  //     $('#user_id').val(data.id);
-  //     $('#add-user-fullname').val(data.name);
-  //     $('#add-user-email').val(data.email);
-  //   });
-  // });
+    myModal.show();
 
+    $(document).on('shown.bs.modal', '#modalCenter', function () {
+      document.getElementById('URETIMMIKTAR').focus();
+      document.getElementById('URETIMMIKTAR').select();
+    });
+  });
 
-  // setTimeout(() => {
-  //   $('.dataTables_filter .form-control').removeClass('form-control-sm');
-  //   $('.dataTables_length .form-select').removeClass('form-select-sm');
-  // }, 300);
+  setTimeout(() => {
+    $('.dataTables_filter .form-control').removeClass('form-control-sm');
+    $('.dataTables_length .form-select').removeClass('form-select-sm');
+  }, 300);
 
-  // const addNewUserForm = document.getElementById('addNewUserForm');
+  $(document).on('click', '#btnKaydet', function () {
+    var id = $('#rec_id').val();
+    var mamul = $('#mamul').val();
+    var isemriid = $('#isemriid').val();
+    var tarih = $('#TARIH').val();
+    var miktarTemp = $('#miktarTemp').val();
+    var uretimMiktar = $('#URETIMMIKTAR').val();
+    var notlar = $('#NOTLAR1').val();
 
-  // const fv = FormValidation.formValidation(addNewUserForm, {
-  //   fields: {
-  //     name: {
-  //       validators: {
-  //         notEmpty: {
-  //           message: 'Lütfen Tam İsminizi Giriniz'
-  //         }
-  //       }
-  //     },
-  //     email: {
-  //       validators: {
-  //         notEmpty: {
-  //           message: 'Please enter your email'
-  //         },
-  //         emailAddress: {
-  //           message: 'The value is not a valid email address'
-  //         }
-  //       }
-  //     },
-  //     userContact: {
-  //       validators: {
-  //         notEmpty: {
-  //           message: 'Please enter your contact'
-  //         }
-  //       }
-  //     },
-  //     company: {
-  //       validators: {
-  //         notEmpty: {
-  //           message: 'Please enter your company'
-  //         }
-  //       }
-  //     }
-  //   },
-  //   plugins: {
-  //     trigger: new FormValidation.plugins.Trigger(),
-  //     bootstrap5: new FormValidation.plugins.Bootstrap5({
-  //       // Use this for enabling/changing valid/invalid class
-  //       eleValidClass: '',
-  //       rowSelector: function (field, ele) {
-  //         // field is the field name & ele is the field element
-  //         return '.mb-6';
-  //       }
-  //     }),
-  //     submitButton: new FormValidation.plugins.SubmitButton(),
-  //     // Submit the form when all fields are valid
-  //     // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-  //     autoFocus: new FormValidation.plugins.AutoFocus()
-  //   }
-  // }).on('core.form.valid', function () {
-  //   $.ajax({
-  //     data: $('#addNewUserForm').serialize(),
-  //     url: `${baseUrl}user-list`,
-  //     type: 'POST',
-  //     success: function (status) {
-  //       dt_user.draw();
-  //       offCanvasForm.offcanvas('hide');
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: `Successfully ${status}!`,
-  //         text: `User ${status} Successfully.`,
-  //         customClass: {
-  //           confirmButton: 'btn btn-success'
-  //         }
-  //       });
-  //     },
-  //     error: function (err) {
-  //       offCanvasForm.offcanvas('hide');
-  //       Swal.fire({
-  //         title: 'Duplicate Entry!',
-  //         text: 'Your email should be unique.',
-  //         icon: 'error',
-  //         customClass: {
-  //           confirmButton: 'btn btn-success'
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
+    // Check if required fields are filled
+    if (tarih === '' || uretimMiktar === '') {
+      alert('Lütfen tüm alanları doldurun.');
+      return;
+    }
 
-  // offCanvasForm.on('hidden.bs.offcanvas', function () {
-  //   fv.resetForm(true);
-  // });
+    // Construct the data object to send to the server
+    var formData = {
+      id: id,
+      isemriid: isemriid,
+      mamul: mamul,
+      tarih: tarih,
+      notlar: notlar,
+      uretim_miktar: uretimMiktar,
+      miktarTemp: miktarTemp
+    };
 
+    console.log(formData);
+
+    // AJAX request to save the data
+    $.ajax({
+      url: `${baseUrl}uretim/uretimkaydet`, // Your Laravel route to handle saving
+      method: 'POST',
+      data: formData,
+      success: function (response) {
+        if (response.success) {
+          // alert('Kayıt başarıyla yapıldı!');
+          $('#modalCenter').modal('hide'); // Hide the modal
+          dt_record.draw();
+        } else {
+          alert('Kayıt sırasında bir hata oluştu.');
+        }
+      },
+      error: function () {
+        alert('Sunucu hatası. Lütfen daha sonra tekrar deneyin.');
+      }
+    });
+  });
 });

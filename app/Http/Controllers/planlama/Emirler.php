@@ -375,6 +375,7 @@ class Emirler extends Controller
     try {
       $emir->URETIMMIKTAR += $miktar;
       $emir->save();
+
       $hrkt = StokHrkt::create(
         [
           'TUR' => 'Üretimden Giriş',

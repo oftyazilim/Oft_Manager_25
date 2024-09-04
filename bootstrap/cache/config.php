@@ -8,13 +8,13 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://192.168.5.103:8000',
+    'url' => 'http://192.168.3.54:8000',
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => NULL,
     'timezone' => 'Europe/Istanbul',
-    'locale' => 'tr',
-    'fallback_locale' => 'tr',
-    'faker_locale' => 'en_TR',
+    'locale' => 'en',
+    'fallback_locale' => 'en',
+    'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
     'key' => 'base64:LdxtxX9VpTpfn7rc7/FKCjnvgd6PxUe3HpcTM3/o/CA=',
     'previous_keys' => 
@@ -327,7 +327,7 @@
       array (
         'driver' => 'local',
         'root' => '/Applications/XAMPP/xamppfiles/htdocs/Oft_Manager_25/storage/app/public',
-        'url' => 'http://192.168.5.103:8000/storage',
+        'url' => 'http://192.168.3.54:8000/storage',
         'visibility' => 'public',
         'throw' => false,
       ),
@@ -703,7 +703,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => '192.168.5.103:8000',
+      5 => '192.168.3.54:8000',
     ),
     'guard' => 
     array (
