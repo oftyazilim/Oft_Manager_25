@@ -12,9 +12,9 @@
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => NULL,
     'timezone' => 'Europe/Istanbul',
-    'locale' => 'en',
-    'fallback_locale' => 'en',
-    'faker_locale' => 'en_US',
+    'locale' => 'tr',
+    'fallback_locale' => 'tr',
+    'faker_locale' => 'en_TR',
     'cipher' => 'AES-256-CBC',
     'key' => 'base64:LdxtxX9VpTpfn7rc7/FKCjnvgd6PxUe3HpcTM3/o/CA=',
     'previous_keys' => 

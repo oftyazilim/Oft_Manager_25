@@ -79,7 +79,7 @@
     <div class="card mt-2">
         <div class="card">
             <div class="card-datatable table-responsive-sm  text-nowrap">
-                <table style="font-size: 14px" class="datatables-emirler table-sm">
+                <table style="font-size: 14px" class="datatables-emirler table-sm table-striped">
                     <thead class="border-top">
                         <tr>
                             <th>GÖSTER</th>

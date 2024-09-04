@@ -317,7 +317,7 @@ $(function () {
           .columns(16)
           .every(function () {
             var column = this;
-            var select = $('<select id="sss" class="form-select"><option value="">Tüm Gruplar</option></select>')
+            var select = $('<select id="sss" class="form-select"><option value="">Tüm İstasyonlar</option></select>')
               .appendTo('.istasyon')
               .on('change', function () {
                 grupSecimi = $(this).val(); // Seçilen değeri değişkene atıyoruz

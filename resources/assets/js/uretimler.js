@@ -2,12 +2,19 @@
 'use strict';
 import Swal from 'sweetalert2';
 import ExcelJS from 'exceljs';
+import DataTable from 'datatables.net-bs5';
 
 // Datatable (jquery)
 $(function () {
   document.getElementById('baslik').innerHTML = 'Üretim Girişleri';
 
-  var dt_user_table = $('.datatables-uretimler')
+  var dt_table = $('.datatables-uretimler')
+  var myModalElement = document.getElementById('modalCenter');
+  var myModal = new bootstrap.Modal(myModalElement, {
+    backdrop: true,
+    keyboard: true
+  });
+  var grupSecimi = '';
 
   $.ajaxSetup({
     headers: {
@@ -16,8 +23,8 @@ $(function () {
   });
 
   // Users datatable
-  if (dt_user_table.length) {
-    var dt_user = dt_user_table.DataTable({
+  if (dt_table.length) {
+    var dt_record = dt_table.DataTable({
       processing: true,
       serverSide: true,
       paging: false,
@@ -28,7 +35,11 @@ $(function () {
         return ' Listelenen kayıt sayısı:   ' + end;
     },
       ajax: {
-        url: baseUrl + 'uretim-list'
+        url: baseUrl + 'uretim-list',
+        data: function (d) {
+          d.grupSecimi = grupSecimi; // Seçilen filtre değerini AJAX isteğine ekliyoruz
+          // Diğer gerekli parametreler de burada eklenebilir
+        }
       },
       columns: [
         { data: 'fake_id' },
@@ -60,6 +71,7 @@ $(function () {
           searchable: false,
           orderable: false,
           targets: 0,
+          visible:false,
           render: function (data, type, full, meta) {
             return `<span>${full.fake_id}</span>`;
           }
@@ -68,13 +80,11 @@ $(function () {
           // ISTKOD
           targets: 1,
           responsivePriority: 4,
-          className: 'dt-body-center'
         },
         {
           // ISEMRIID
           targets: 2,
           responsivePriority: 4,
-          className: 'dt-body-right'
         },
         {
           // STOKID
@@ -107,9 +117,11 @@ $(function () {
         },
         {
           // URETIMTARIH
+          title: 'TARİH',
           targets: 8,
           responsivePriority: 4,
-          className: 'dt-body-center'
+          className: 'dt-body-center',
+          render: DataTable.render.date()
         },
         {
           // NOTLAR
@@ -121,7 +133,7 @@ $(function () {
           targets: 10,
           responsivePriority: 4,
           className: 'dt-body-right',
-          visible: false,
+          visible: true,
         },
         {
           // Actions
@@ -139,16 +151,16 @@ $(function () {
           }
         }
       ],
-      order: [[3, 'desc']],
+      order: [[10, 'desc']],
        dom:
-         '<"row"' +
-        '<"col-md-2"<"ms-n2"l>>' +
-        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-6 mb-md-0 mt-n6 mt-md-0"fB>>' +
-        '>t' +
-        '<"row"' +
-        '<"col-sm-12 col-md-6"i>' +
-        '<"col-sm-12 col-md-6"p>' +
-         '>',
+       '<"row"' +
+       '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start"B>>' +
+       '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-5 gap-md-4 mt-n5 mt-md-0"f<"istasyon mb-6 mb-md-0">>' +
+       '>t' +
+       '<"row"' +
+       '<"col-sm-12 col-md-6"i>' +
+       '<"col-sm-12 col-md-6"p>' +
+       '>',
       language: {
         search: '',
         searchPlaceholder: 'Ara'
@@ -202,103 +214,120 @@ $(function () {
             return data ? $('<table class="table"/><tbody />').append(data) : false;
           }
         }
+      },
+      initComplete: function () {
+        // Adding role filter once table initialized
+        this.api()
+          .columns(1)
+          .every(function () {
+            var column = this;
+            var select = $('<select id="sss" class="form-select"><option value="">Tüm İstasyonlar</option></select>')
+              .appendTo('.istasyon')
+              .on('change', function () {
+                grupSecimi = $(this).val(); // Seçilen değeri değişkene atıyoruz
+                dt_record.draw(); // Tabloyu tekrar yüklüyoruz (AJAX isteği tetiklenir)
+              });
+
+            column
+              .data()
+              .unique()
+              .sort()
+              .each(function (d, j) {
+                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+              });
+          });
       }
     });
   }
 
-  // Delete Record
-  $(document).on('click', '.delete-record', function () {
-    alert($(this).data('id'));
-    var user_id = $(this).data('id'),
-      dtrModal = $('.dtr-bs-modal.show');
+  // // Delete Record
+  // $(document).on('click', '.delete-record', function () {
+  //   alert($(this).data('id'));
+  //   var user_id = $(this).data('id'),
+  //     dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
-    if (dtrModal.length) {
-      dtrModal.modal('hide');
-    }
+  //   // hide responsive modal in small screen
+  //   if (dtrModal.length) {
+  //     dtrModal.modal('hide');
+  //   }
 
-    // sweetalert for confirmation of delete
-    Swal.fire({
-      title: 'Emin misiniz?',
-      text: 'Bu işlemi geri alamayacaksınız!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Evet, Silebilirsin!',
-      cancelButtonText: 'Vazgeç',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        // delete the data
-        $.ajax({
-          type: 'DELETE',
-          url: `${baseUrl}user-list/${user_id}`,
-          success: function () {
-            dt_user.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
+  //   // sweetalert for confirmation of delete
+  //   Swal.fire({
+  //     title: 'Emin misiniz?',
+  //     text: 'Bu işlemi geri alamayacaksınız!',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Evet, Silebilirsin!',
+  //     cancelButtonText: 'Vazgeç',
+  //     customClass: {
+  //       confirmButton: 'btn btn-primary me-3',
+  //       cancelButton: 'btn btn-label-secondary'
+  //     },
+  //     buttonsStyling: false
+  //   }).then(function (result) {
+  //     if (result.value) {
+  //       // delete the data
+  //       $.ajax({
+  //         type: 'DELETE',
+  //         url: `${baseUrl}user-list/${user_id}`,
+  //         success: function () {
+  //           dt_user.draw();
+  //         },
+  //         error: function (error) {
+  //           console.log(error);
+  //         }
+  //       });
 
-        // success sweetalert
-        Swal.fire({
-          icon: 'success',
-          title: 'Silindi!',
-          text: 'Kullanıcı silindi',
-          confirmButtonText: 'Kapat',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire({
-          title: 'Vazgeçildi',
-          text: 'Kullanıcı silinmedi!',
-          icon: 'error',
-          confirmButtonText: 'Kapat',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      }
-    });
-  });
+  //       // success sweetalert
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: 'Silindi!',
+  //         text: 'Kullanıcı silindi',
+  //         confirmButtonText: 'Kapat',
+  //         customClass: {
+  //           confirmButton: 'btn btn-success'
+  //         }
+  //       });
+  //     } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //       Swal.fire({
+  //         title: 'Vazgeçildi',
+  //         text: 'Kullanıcı silinmedi!',
+  //         icon: 'error',
+  //         confirmButtonText: 'Kapat',
+  //         customClass: {
+  //           confirmButton: 'btn btn-success'
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
 
-  // edit record
-  $(document).on('click', '.edit-record', function () {
-    var user_id = $(this).data('id'),
-      dtrModal = $('.dtr-bs-modal.show');
+  // // edit record
+  // $(document).on('click', '.edit-record', function () {
+  //   var user_id = $(this).data('id'),
+  //     dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
-    if (dtrModal.length) {
-      dtrModal.modal('hide');
-    }
+  //   // hide responsive modal in small screen
+  //   if (dtrModal.length) {
+  //     dtrModal.modal('hide');
+  //   }
 
-    // changing the title of offcanvas
-    $('#offcanvasAddUserLabel').html('Edit User');
+  //   // changing the title of offcanvas
+  //   $('#offcanvasAddUserLabel').html('Edit User');
 
-    // get data
-    $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
-      $('#user_id').val(data.id);
-      $('#add-user-fullname').val(data.name);
-      $('#add-user-email').val(data.email);
-    });
-  });
+  //   // get data
+  //   $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
+  //     $('#user_id').val(data.id);
+  //     $('#add-user-fullname').val(data.name);
+  //     $('#add-user-email').val(data.email);
+  //   });
+  // });
 
-  // changing the title
-  $('.add-new').on('click', function () {
-    $('#user_id').val(''); //reseting input field
-    $('#offcanvasAddUserLabel').html('Add User');
-  });
 
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
+  // setTimeout(() => {
+  //   $('.dataTables_filter .form-control').removeClass('form-control-sm');
+  //   $('.dataTables_length .form-select').removeClass('form-select-sm');
+  // }, 300);
 
   // const addNewUserForm = document.getElementById('addNewUserForm');
 

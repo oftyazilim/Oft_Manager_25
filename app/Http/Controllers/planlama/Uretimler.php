@@ -19,7 +19,7 @@ class Uretimler extends Controller
   {
     $columns = [
       1 => 'ID',
-      2 => 'STOKID',
+      2 => 'ISTKOD',
       3 => 'ISEMRIID',
       4 => 'STOKID',
       5 => 'KOD',
@@ -31,10 +31,8 @@ class Uretimler extends Controller
     ];
 
     $search = [];
+    $istasyon = $request->input('grupSecimi');
 
-    $totalData = StokHrkt::count();
-
-    $totalFiltered = $totalData;
 
     $limit = $request->input('length');
     $start = $request->input('start');
@@ -43,11 +41,23 @@ class Uretimler extends Controller
 
     if (empty($request->input('search.value'))) {
       $kayitlar = DB::table('OFTV_01_STOKHRKT')
+      ->where('ISTKOD',  'LIKE', "%{$istasyon}%")
+      ->orderBy('ID', 'desc')
         ->get();
     } else {
       $search = $request->input('search.value');
 
       $kayitlar = DB::table('OFTV_01_STOKHRKT')
+      ->where(function ($query) use ($istasyon) {
+        $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
+      })
+      ->where(function ($query) use ($search) {
+        $query->where('KOD', 'LIKE', "%{$search}%")
+          ->orWhere('TANIM', 'LIKE', "%{$search}%")
+          ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+          ->orWhere('URETIMTARIH', 'LIKE', "%{$search}%");
+      })
+      ->orderBy('ID', 'desc')
       ->get();
     }
 

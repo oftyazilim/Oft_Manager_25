@@ -36,9 +36,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/planlama/mamuller', [Mamuller::class, 'getMamuller'])->name('planlama.mamuller');
   Route::get('/planlama/uretimler', [Uretimler::class, 'getListe'])->name('planlama.uretimler');
   Route::get('/planlama/isemirleri', [Emirler::class, 'getEmirler'])->name('planlama.isemirleri');
+
   Route::resource('/mamul-list', Mamuller::class);
   Route::resource('/emir-list', Emirler::class);
   Route::resource('/uretim-list', Uretimler::class);
+
   Route::get('/emir-list/mamulal/{ISTKOD}', [Emirler::class, 'MamulAl']);
   Route::get('/exportmamul/excel', [Mamuller::class, 'exportExcel']);
   Route::get('/exportemir/excel', [Emirler::class, 'exportExcel']);
