@@ -1,3 +1,4 @@
+
 /**
  *  Pages Authentication
  */
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
           });
         }
+
       });
     }
 

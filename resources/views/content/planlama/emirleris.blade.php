@@ -84,7 +84,7 @@
                         <tr>
                             <th>GÖSTER</th>
                             <th>ÜRETİM SIRASI</th>
-                            <th>ID</th>
+                            <th>İŞEMRİ ID</th>
                             <th>ISTASYONID</th>
                             <th>URUNID</th>
                             <th>KOD</th>

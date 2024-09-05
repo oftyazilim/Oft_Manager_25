@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Emir;
 use App\Models\StokHrkt;
 use App\Models\User;
+use App\Models\Mamul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -61,6 +62,8 @@ class Uretimler extends Controller
           $query->where('KOD', 'LIKE', "%{$search}%")
             ->orWhere('TANIM', 'LIKE', "%{$search}%")
             ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+            ->orWhere('ID', 'LIKE', "%{$search}%")
+            ->orWhere('NOTLAR', 'LIKE', "%{$search}%")
             ->orWhere('URETIMTARIH', 'LIKE', "%{$search}%");
         })
         ->orderBy('ID', 'desc')
@@ -148,10 +151,16 @@ class Uretimler extends Controller
       $operatorID = null;
     }
 
-    $hrkt = StokHrkt::find($kayitid)->select('ISEMRIID', 'MIKTAR')->first();
-    $emir = Emir::find(33);
+    $hrkt = StokHrkt::find($kayitid)->select('ISEMRIID', 'MIKTAR', 'STOKID')->first();
+
+    $emir = Emir::find($hrkt->ISEMRIID);
     $emir->URETIMMIKTAR -= (int)$hrkt->MIKTAR;
     $emir->save();
+
+    $mml = Mamul::find($hrkt->STOKID);
+    $mml->MEVCUT -= (int)$hrkt->MIKTAR;
+    $mml->GIREN -= (int)$hrkt->MIKTAR;
+    $mml->save();
 
     $hrkte = StokHrkt::updateOrCreate(
       ['ID' => $kayitid],
@@ -197,5 +206,34 @@ class Uretimler extends Controller
     } catch (\Exception $e) {
       return response()->json(['success' => false, 'message' => $e->getMessage()]);
     }
+  }
+
+
+  public function exportExcel(Request $request)
+  {
+    $istasyon = $request->input('grupSecimi');
+    $search = $request->input('search');
+
+    if (empty($search)) {
+      $emirVeriler = DB::table('OFTV_01_STOKHRKT')->get();
+    } else {
+
+      $emirVeriler = DB::table('OFTV_01_STOKHRKT')
+      ->where(function ($query) use ($istasyon) {
+        $query->where('ISTKOD',  'LIKE', "%{$istasyon}%"); // ISTKOD alanı için mutlak eşleşme
+      })
+      ->where(function ($query) use ($search) {
+        $query->where('KOD', 'LIKE', "%{$search}%")
+          ->orWhere('TANIM', 'LIKE', "%{$search}%")
+          ->orWhere('MMLGRPKOD', 'LIKE', "%{$search}%")
+          ->orWhere('ID', 'LIKE', "%{$search}%")
+          ->orWhere('NOTLAR', 'LIKE', "%{$search}%")
+          ->orWhere('URETIMTARIH', 'LIKE', "%{$search}%");
+      })
+      ->orderBy('ID', 'desc')
+      ->get();
+    }
+
+    return response()->json($emirVeriler);
   }
 }

@@ -6,13 +6,16 @@ use App\Http\Controllers\pages\HomePage;
 use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
+use App\Http\Controllers\dashboards\Dashboards;
 use App\Http\Controllers\front_pages\Landing;
 use App\Http\Controllers\laravel_example\UserManagement;
 use App\Http\Controllers\planlama\Mamuller;
 use App\Http\Controllers\planlama\Emirler;
 use App\Http\Controllers\planlama\Uretimler;
+use App\Models\StokHrkt;
 
 Route::get('/', [Landing::class, 'index'])->name('front-pages-landing');
+Route::get('dashboards/montaj_01', [Dashboards::class, 'montaj_01'])->name('dashboards-montaj_01');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
@@ -44,6 +47,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   Route::get('/emir-list/mamulal/{ISTKOD}', [Emirler::class, 'MamulAl']);
   Route::get('/exportmamul/excel', [Mamuller::class, 'exportExcel']);
   Route::get('/exportemir/excel', [Emirler::class, 'exportExcel']);
+  Route::get('/exporthrk/excel', [Uretimler::class, 'exportExcel']);
   Route::post('/emir/yukariat', [Emirler::class, 'yukariAt']);
   Route::post('/emir/asagiat', [Emirler::class, 'asagiAt']);
   Route::post('/emir/uretimkaydet', [Emirler::class, 'uretimKaydet']);

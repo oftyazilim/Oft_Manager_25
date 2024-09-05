@@ -285,7 +285,7 @@ $(function () {
     });
   });
 
-  // // edit record
+  // edit record
   $(document).on('click', '.edit-record', function () {
     var kayit_id = $(this).data('id');
 
@@ -363,6 +363,83 @@ $(function () {
       },
       error: function () {
         alert('Sunucu hatası. Lütfen daha sonra tekrar deneyin.');
+      }
+    });
+  });
+
+  $('.export').on('click', function () {
+    var searchValue = dt_record.search();
+    $.ajax({
+      url: '/exporthrk/excel?search=' + encodeURIComponent(searchValue),
+      type: 'GET',
+      dataType: 'json',
+      success: function (response) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('UretimGirisleri');
+
+        // Başlık satırını ekleyin
+        worksheet.columns = [
+          { header: 'İŞEMRİ ID', key: 'ISEMRIID', width: 15 },
+          { header: 'KOD', key: 'KOD', width: 20 },
+          { header: 'TANIM', key: 'TANIM', width: 55 },
+          { header: 'STOK GRUP KODU', key: 'ISTKOD', width: 18 },
+          { header: 'ANA MAMUL TANIMI', key: 'MMLGRPKOD', width: 30 },
+          { header: 'MİKTAR', key: 'MIKTAR', width: 15 },
+          { header: 'NOTLAR', key: 'NOTLAR', width: 10 },
+          { header: 'TARİH', key: 'TARIH', width: 10 }
+        ];
+        worksheet.getColumn('G').alignment = { horizontal: 'center' };
+
+        // Excel dosyasına verileri ekleyin
+        response.forEach(function (veri) {
+          // Diyelim ki tarih zaman damgasını hesapladık:
+          var unixTimestamp = Math.floor(new Date(veri.URETIMTARIH).getTime() / 1000);
+
+          // Excel tarih formatına dönüştürme
+          var excelDate = 25569 + (unixTimestamp + 10800) / 86400;
+
+          // Geri dönüşüm işlemi - Unix zaman damgasına çevirme
+          var convertedUnixTimestamp = (excelDate - 25569) * 86400 - 10800;
+
+          // Unix zaman damgasını Date objesine çevirme
+          var tarih = new Date(convertedUnixTimestamp * 1000);
+          // var dateParts = veri.URETIMTARIH.substring(0, 10).split('-');
+          // var dateObject = new Date(Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2]));
+          // var tarih = dateObject.toISOString().split('T')[0];
+console.log(tarih);
+          worksheet.addRow({
+            ISEMRIID: veri.ISEMRIID,
+            KOD: veri.KOD,
+            TANIM: veri.TANIM,
+            ISTKOD: veri.ISTKOD,
+            MMLGRPKOD: veri.MMLGRPKOD,
+            MIKTAR: veri.MIKTAR,
+            NOTLAR: veri.NOTLAR,
+            TARIH: tarih
+          });
+        });
+
+        worksheet.autoFilter = {
+          from: 'A1',
+          to: 'H1'
+        };
+
+        // Excel dosyasını Blob olarak yazın
+        workbook.xlsx
+          .writeBuffer()
+          .then(function (data) {
+            var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'UretimGirisleri.xlsx';
+            link.click();
+          })
+          .catch(function (error) {
+            console.error('Error writing Excel file:', error);
+          });
+      },
+      error: function (xhr, status, error) {
+        console.error('Excel export failed:', error);
       }
     });
   });

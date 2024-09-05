@@ -36,7 +36,8 @@ class Mamuller extends Controller
       4 => 'MMLGRPKOD',
       5 => 'SINIF',
       6 => 'AKTIF',
-      7 => 'ID',
+      7 => 'MEVCUT',
+      8 => 'ID',
     ];
 
     $search = [];
@@ -87,6 +88,7 @@ class Mamuller extends Controller
         $nestedData['MMLGRPKOD'] = $klt->MMLGRPKOD;
         $nestedData['SINIF'] = $klt->SINIF;
         $nestedData['AKTIF'] = $klt->AKTIF;
+        $nestedData['MEVCUT'] = $klt->MEVCUT;
         $nestedData['ID'] = $klt->ID;
 
         $data[] = $nestedData;
@@ -193,7 +195,7 @@ class Mamuller extends Controller
     $kayitid = (int)$id;
     $operatorID = Auth::user()->id;
     $mamul = Mamul::updateOrCreate(
-      ['ID' => $kayitid], // Güncelleme için eşleştirilecek koşul
+      ['ID' => $kayitid],
       [
         'SILINDI' => 1,
         'SILENID' => $operatorID,

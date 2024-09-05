@@ -186,10 +186,11 @@ import ApexCharts from 'apexcharts';
 
   document.addEventListener('DOMContentLoaded', function () {
     // Çalıştırmak istediğiniz JavaScript kodu
-    veriAl();
+    //veriAl();
   });
 
   function veriAl() {
+    return;
     $.ajax({
       type: 'GET',
       url: '/dashboard/verial',

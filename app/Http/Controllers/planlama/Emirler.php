@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Emir;
 use App\Models\StokHrkt;
 use App\Models\User;
+use App\Models\Mamul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -365,16 +366,15 @@ class Emirler extends Controller
       $operatorID = null;
     }
 
-    // $mamultemp = Emir::where('ID', $kayitid)
-    //   ->where('KOD', $request->TANIM)
-    //   ->where('SILINDI', 0)
-    //   ->select('ID', 'TANIM', 'MMLGRPKOD', 'STGRPKOD')
-    //   ->first();
-
-    $emir = Emir::find($kayitid);
     try {
+    $emir = Emir::find($kayitid);
       $emir->URETIMMIKTAR += $miktar;
       $emir->save();
+
+      $mml = Mamul::find($emir->URUNID);
+      $mml->MEVCUT += (int)$miktar;
+      $mml->GIREN += (int)$miktar;
+      $mml->save();
 
       $hrkt = StokHrkt::create(
         [

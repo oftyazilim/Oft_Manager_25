@@ -7,6 +7,19 @@
       "slug": "pages-home"
     },
     {
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons ti ti-arrow-big-right ti-flashing",
+      "slug": "dashboards",
+      "submenu": [
+        {
+          "url": "dashboards/montaj_01",
+          "name": "Montaj",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+          "slug": "dashboards-montaj_01"
+        }
+      ]
+    },
+    {
       "name": "Planlama",
       "icon": "menu-icon tf-icons ti ti-mood-dollar",
       "slug": "planlama",

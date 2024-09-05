@@ -57,6 +57,7 @@
                             <th>SINIF</th>
                             <th>AKTİF</th>
                             <th>ID</th>
+                            <th>MEVCUT</th>
                             <th>EYLEM</th>
                         </tr>
                     </thead>

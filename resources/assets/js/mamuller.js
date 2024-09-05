@@ -55,9 +55,9 @@ $(function () {
       info: true,
       scrollCollapse: false,
       scrollY: '65vh',
-      infoCallback: function(settings, start, end, max, total, pre) {
+      infoCallback: function (settings, start, end, max, total, pre) {
         return ' Listelenen kayıt sayısı:   ' + end;
-    },
+      },
       ajax: {
         url: baseUrl + 'mamul-list'
       },
@@ -71,6 +71,7 @@ $(function () {
         { data: 'SINIF' },
         { data: 'AKTIF' },
         { data: 'ID' },
+        { data: 'MEVCUT' },
         { data: 'eylem' }
       ],
       buttons: [
@@ -93,7 +94,7 @@ $(function () {
       order: [[7, 'desc']],
       language: {
         search: '',
-        searchPlaceholder: 'Ara',
+        searchPlaceholder: 'Ara'
       },
       dom:
         '<"row"' +
@@ -148,7 +149,11 @@ $(function () {
           responsivePriority: 1
         },
         {
-          targets: 6, //aktif
+          targets: 6, //mevcut
+          responsivePriority: 1
+        },
+        {
+          targets: 7, //aktif
           className: 'dt-body-center',
           responsivePriority: 3,
           render: function (data, type, full, meta) {
@@ -219,7 +224,7 @@ $(function () {
   }
 
   // Delete Record
-  $(document).on('click', '.delete-record', function () {
+  $(document).on('click', '.delete-record', async function () {
     var temp_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
@@ -228,43 +233,61 @@ $(function () {
       dtrModal.modal('hide');
     }
 
-    // sweetalert for confirmation of delete
-    Swal.fire({
-      title: 'Emin misiniz?',
-      text: 'Bu işlemi geri alamayacaksınız!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Evet, Silebilirsin!',
-      cancelButtonText: 'Vazgeç',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        $.ajax({
-          type: 'DELETE',
-          url: `${baseUrl}mamul-list/${temp_id}`,
-          success: function () {
-            dt_record.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
+    try {
+      const hareketSonucu = await hareketKontrol(temp_id); // Asenkron sonucu bekle
+
+      if (hareketSonucu == 1) {
         Swal.fire({
-          title: 'Vazgeçildi',
-          text: 'Kayıt silinmedi!',
+          title: 'Olumsuz!',
+          text: 'Hareket görmüş kartlar silinemez!',
           icon: 'error',
           confirmButtonText: 'Kapat',
           customClass: {
             confirmButton: 'btn btn-success'
           }
         });
+      } else {
+        // sweetalert for confirmation of delete
+        Swal.fire({
+          title: 'Emin misiniz?',
+          text: 'Bu işlemi geri alamayacaksınız!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Evet, Silebilirsin!',
+          cancelButtonText: 'Vazgeç',
+          customClass: {
+            confirmButton: 'btn btn-primary me-3',
+            cancelButton: 'btn btn-label-secondary'
+          },
+          buttonsStyling: false
+        }).then(function (result) {
+          if (result.value) {
+            $.ajax({
+              type: 'DELETE',
+              url: `${baseUrl}mamul-list/${temp_id}`,
+              success: function () {
+                dt_record.draw();
+              },
+              error: function (error) {
+                console.log(error);
+              }
+            });
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+              title: 'Vazgeçildi',
+              text: 'Kayıt silinmedi!',
+              icon: 'error',
+              confirmButtonText: 'Kapat',
+              customClass: {
+                confirmButton: 'btn btn-success'
+              }
+            });
+          }
+        });
       }
-    });
+    } catch (error) {
+      console.error('Hareket kontrol hatası:', error);
+    }
   });
 
   // edit record
@@ -299,6 +322,23 @@ $(function () {
       $('#AKTIF').prop('checked', data[0].AKTIF == '1' ? true : false);
     } catch (error) {
       console.error('Veri çekme hatası:', error);
+    }
+  }
+
+  async function hareketKontrol(kayit_id) {
+    try {
+      const response = await fetch(`${baseUrl}mamul-list/${kayit_id}/edit`);
+      const veri = await response.json();
+
+      if (veri.length > 0 && veri[0].GIREN !== undefined) {
+        return veri[0].GIREN > 0 ? 1 : 0;
+      } else {
+        console.error('Beklenen veri bulunamadı.');
+        return 0;
+      }
+    } catch (error) {
+      console.error('Veri çekme hatası:', error);
+      return 0; // Hata durumunda da bir değer döndürmek iyi olur
     }
   }
 
@@ -442,7 +482,7 @@ $(function () {
             STGRPKOD: veri.STGRPKOD,
             MMLGRPKOD: veri.MMLGRPKOD,
             SINIF: veri.SINIF,
-            AKTIF: veri.AKTIF,
+            AKTIF: veri.AKTIF
           });
         });
 

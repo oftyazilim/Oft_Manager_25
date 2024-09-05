@@ -154,8 +154,8 @@ $(function () {
         },
         {
           targets: 2, //id
-          responsivePriority: 5,
-          visible: false,
+          responsivePriority: 3,
+          visible: true,
           className: 'dt-body-left'
         },
         {
@@ -354,55 +354,75 @@ $(function () {
     $('#NOTLAR').val('');
     $('#URETIMSIRA').val('');
     $('#AKTIF').prop('checked', false);
+    document.getElementById('TANIM').disabled = true;
+
   });
 
   // Delete Record
-  $(document).on('click', '.delete-record', function () {
+  $(document).on('click', '.delete-record', async function () {
     var temp_id = $(this).data('id'),
       dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
+    // Küçük ekranlarda responsive modal gizleme
     if (dtrModal.length) {
       dtrModal.modal('hide');
     }
 
-    // sweetalert for confirmation of delete
-    Swal.fire({
-      title: 'Emin misiniz?',
-      text: 'Bu işlemi geri alamayacaksınız!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Evet, Silebilirsin!',
-      cancelButtonText: 'Vazgeç',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        $.ajax({
-          type: 'DELETE',
-          url: `${baseUrl}emir-list/${temp_id}`,
-          success: function () {
-            dt_record.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
+    try {
+      const hareketSonucu = await hareketKontrol(temp_id);  // Asenkron sonucu bekle
+
+      if (hareketSonucu == 1) {
         Swal.fire({
-          title: 'Vazgeçildi',
-          text: 'Kayıt silinmedi!',
+          title: 'Olumsuz!',
+          text: 'Üretim yapılmış kartlar silinemez!',
           icon: 'error',
           confirmButtonText: 'Kapat',
           customClass: {
             confirmButton: 'btn btn-success'
           }
         });
+      } else {
+        // Silme işlemi için onay kutusu
+        Swal.fire({
+          title: 'Emin misiniz?',
+          text: 'Bu işlemi geri alamayacaksınız!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Evet, Silebilirsin!',
+          cancelButtonText: 'Vazgeç',
+          customClass: {
+            confirmButton: 'btn btn-primary me-3',
+            cancelButton: 'btn btn-label-secondary'
+          },
+          buttonsStyling: false
+        }).then(function (result) {
+          if (result.value) {
+            $.ajax({
+              type: 'DELETE',
+              url: `${baseUrl}emir-list/${temp_id}`,
+              success: function () {
+                dt_record.draw();
+              },
+              error: function (error) {
+                console.log(error);
+              }
+            });
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+              title: 'Vazgeçildi',
+              text: 'Kayıt silinmedi!',
+              icon: 'error',
+              confirmButtonText: 'Kapat',
+              customClass: {
+                confirmButton: 'btn btn-success'
+              }
+            });
+          }
+        });
       }
-    });
+    } catch (error) {
+      console.error('Hareket kontrol hatası:', error);
+    }
   });
 
   // edit record
@@ -458,6 +478,23 @@ $(function () {
       $('#AKTIF').prop('checked', veri[0].AKTIF == '1' ? true : false);
     } catch (error) {
       console.error('Veri çekme hatası:', error);
+    }
+  }
+
+  async function hareketKontrol(kayit_id) {
+    try {
+      const response = await fetch(`${baseUrl}emir-list/${kayit_id}/edit`);
+      const veri = await response.json();
+
+      if (veri.length > 0 && veri[0].URETIMMIKTAR !== undefined) {
+        return veri[0].URETIMMIKTAR > 0 ? 1 : 0;
+      } else {
+        console.error('Beklenen veri bulunamadı.');
+        return 0;
+      }
+    } catch (error) {
+      console.error('Veri çekme hatası:', error);
+      return 0;  // Hata durumunda da bir değer döndürmek iyi olur
     }
   }
 
