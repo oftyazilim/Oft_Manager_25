@@ -15,7 +15,9 @@ use App\Http\Controllers\planlama\Uretimler;
 use App\Models\StokHrkt;
 
 Route::get('/', [Landing::class, 'index'])->name('front-pages-landing');
-Route::get('dashboards/montaj_01', [Dashboards::class, 'montaj_01'])->name('dashboards-montaj_01');
+Route::get('/dashboards/montaj_01', [Dashboards::class, 'montaj_01'])->name('dashboards-montaj_01');
+Route::get('/dashboards/zamanal', [Dashboards::class, 'zamanAl'])->name('dashboards-zamanal');
+Route::get('/dashboards/miktaral', [Dashboards::class, 'miktarAl'])->name('dashboards-miktaral');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {

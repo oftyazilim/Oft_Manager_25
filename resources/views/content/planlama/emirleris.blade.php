@@ -19,7 +19,6 @@
 <!-- Page Scripts -->
 @section('page-script')
     @vite(['resources/assets/js/emirleris.js'])
-
 @endsection
 
 
