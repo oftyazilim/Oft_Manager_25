@@ -51,7 +51,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="BG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim1 fade-text miktar" id="BG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
@@ -78,7 +78,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="PG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim2 fade-text miktar" id="PG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
@@ -105,7 +105,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="ŞG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim3 fade-text miktar" id="ŞG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
@@ -132,7 +132,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="SG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim4 fade-text miktar" id="SG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
@@ -159,7 +159,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="VG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim5 fade-text miktar" id="VG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
@@ -186,7 +186,7 @@
                 <div class="border rounded p-2 mt-2">
                   <h5 class="text-center baslik">Üretilen</h5>
                     <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
-                    <h4 class="miktarUretim fade-text miktar" id="GG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
+                    <h4 class="miktarUretim6 fade-text miktar" id="GG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
                 <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>

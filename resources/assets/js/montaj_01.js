@@ -1,76 +1,94 @@
 import axios from 'axios';
 
+
 // Gösterilecek yazılar
 const texts = ['0', '...'];
 const textsBaslik = ['(Haftalık)', '(Günlük)'];
-const textsMiktar = ['0', '0'];
+const textsMiktar1 = ['0', '0'];
+const textsMiktar2 = ['0', '0'];
+const textsMiktar3 = ['0', '0'];
+const textsMiktar4 = ['0', '0'];
+const textsMiktar5 = ['0', '0'];
+const textsMiktar6 = ['0', '0'];
 
 let currentTextIndex = 0;
-const textContainer = document.getElementById('text-container'); // ID ile tek bir öğeyi seçer
-const textContainersBaslik = document.querySelectorAll('.baslikUretim'); // Class ile tüm ilgili öğeleri seçer
-const textContainersMiktar = document.querySelectorAll('.miktarUretim'); // Class ile tüm ilgili öğeleri seçer
+
+const textContainer = document.getElementById('text-container'); // Tekil öğe
+const textContainersBaslik = document.querySelectorAll('.baslikUretim'); // Çoklu öğeler
+const textContainersMiktar1 = document.querySelectorAll('.miktarUretim1');
+const textContainersMiktar2 = document.querySelectorAll('.miktarUretim2');
+const textContainersMiktar3 = document.querySelectorAll('.miktarUretim3');
+const textContainersMiktar4 = document.querySelectorAll('.miktarUretim4');
+const textContainersMiktar5 = document.querySelectorAll('.miktarUretim5');
+const textContainersMiktar6 = document.querySelectorAll('.miktarUretim6');
+
+// Yazıları öğelere yerleştiren fonksiyon
+function updateTextContent(container, text) {
+  container.textContent = text;
+  container.classList.add('visible');
+}
+
+// Yazıların kaybolmasını sağlayan fonksiyon
+function hideTextContent(container) {
+  container.classList.remove('visible');
+}
+
+// Herhangi bir öğe listesi için yazıları güncelleyip gösteren fonksiyon
+function updateMultipleTextContents(containers, textsArray) {
+  containers.forEach((container, index) => {
+    updateTextContent(container, textsArray[currentTextIndex]);
+  });
+}
+
+// Herhangi bir öğe listesi için yazıları gizleyen fonksiyon
+function hideMultipleTextContents(containers) {
+  containers.forEach(hideTextContent);
+}
+
+// Miktar güncelleme işlemini yapan fonksiyon
+function updateMiktar() {
+  genelPlan = 0;
+  genelUretim = 0;
+
+  const grupKodlari = ['BG-1', 'PG-1', 'ŞG-1', 'SG-1', 'VG-1', 'GG-1'];
+  grupKodlari.forEach(kod => miktarAl(kod));
+}
 
 // Yazıları sırayla gösteren fonksiyon
 function showNextText() {
-  // Yeni yazıyı ID ile alınan öğeye koy
-  textContainer.textContent = texts[currentTextIndex];
+  // Ana öğedeki metni güncelle
+  updateTextContent(textContainer, texts[currentTextIndex]);
 
-  // Tüm baslikUretim class'lı öğelere sırayla yazıyı koy
-  textContainersBaslik.forEach((textContainerBaslik) => {
-    textContainerBaslik.textContent = textsBaslik[currentTextIndex];
+  // Diğer öğelerdeki metinleri güncelle
+  updateMultipleTextContents(textContainersBaslik, textsBaslik);
+  updateMultipleTextContents(textContainersMiktar1, textsMiktar1);
+  updateMultipleTextContents(textContainersMiktar2, textsMiktar2);
+  updateMultipleTextContents(textContainersMiktar3, textsMiktar3);
+  updateMultipleTextContents(textContainersMiktar4, textsMiktar4);
+  updateMultipleTextContents(textContainersMiktar5, textsMiktar5);
+  updateMultipleTextContents(textContainersMiktar6, textsMiktar6);
 
-    // Görünür hale getir
-    textContainer.classList.add('visible');
-    textContainerBaslik.classList.add('visible');
-  });
-
-  textContainersMiktar.forEach((textContainerMiktar) => {
-    textContainerMiktar.textContent = textsMiktar[currentTextIndex];
-
-    // Görünür hale getir
-    textContainer.classList.add('visible');
-    textContainerMiktar.classList.add('visible');
-  });
-
-  // 3 saniye sonra yazıyı kaybet
+  // 3 saniye sonra metinleri gizle
   setTimeout(() => {
-    textContainer.classList.remove('visible');
-    textContainersBaslik.forEach((textContainerBaslik) => {
-      textContainerBaslik.classList.remove('visible');
-    });
+    hideTextContent(textContainer);
+    hideMultipleTextContents(textContainersBaslik);
+    hideMultipleTextContents(textContainersMiktar1);
+    hideMultipleTextContents(textContainersMiktar2);
+    hideMultipleTextContents(textContainersMiktar3);
+    hideMultipleTextContents(textContainersMiktar4);
+    hideMultipleTextContents(textContainersMiktar5);
+    hideMultipleTextContents(textContainersMiktar6);
 
-    textContainersMiktar.forEach((textContainerMiktar) => {
-      textContainerMiktar.classList.remove('visible');
-    });
-
-    // 1 saniye sonra yeni yazıyı getir
+    // 1 saniye sonra yeni metni göster
     setTimeout(() => {
       currentTextIndex = (currentTextIndex + 1) % texts.length;
-
-      genelPlan = 0;
-      genelUretim = 0;
-
-      miktarAl('BG-1');
-      miktarAl('PG-1');
-      miktarAl('ŞG-1');
-      miktarAl('SG-1');
-      miktarAl('VG-1');
-      miktarAl('GG-1');
-
-      showNextText();
-
-    }, 1000); // Fade-out süresi (1 saniye)
-  }, 3000); // Görünür olma süresi (3 saniye)
+      updateMiktar(); // Miktarları güncelle
+      showNextText(); // Tekrar sıradaki yazıyı göster
+    }, 1000); // Fade-out süresi
+  }, 3000); // Görünür olma süresi
 }
 
-
-miktarAl('BG-1');
-miktarAl('PG-1');
-miktarAl('ŞG-1');
-miktarAl('SG-1');
-miktarAl('VG-1');
-miktarAl('GG-1');
-// İlk çağrı
+// İlk metni göster
 showNextText();
 
 
@@ -79,6 +97,79 @@ showNextText();
 
 
 
+
+
+
+
+// // Gösterilecek yazılar
+// const texts = ['0', '...'];
+// const textsBaslik = ['(Haftalık)', '(Günlük)'];
+// const textsMiktar1 = ['0', '0'];
+// const textsMiktar2 = ['0', '0'];
+
+// let currentTextIndex = 0;
+// const textContainer = document.getElementById('text-container'); // ID ile tek bir öğeyi seçer
+// const textContainersBaslik = document.querySelectorAll('.baslikUretim'); // Class ile tüm ilgili öğeleri seçer
+// const textContainersMiktar1 = document.querySelectorAll('.miktarUretim1'); // Class ile tüm ilgili öğeleri seçer
+// const textContainersMiktar2 = document.querySelectorAll('.miktarUretim2'); // Class ile tüm ilgili öğeleri seçer
+
+// // Yazıları sırayla gösteren fonksiyon
+// function showNextText() {
+//   // Yeni yazıyı ID ile alınan öğeye koy
+//   textContainer.textContent = texts[currentTextIndex];
+//   textContainer.classList.add('visible');
+
+//   // Tüm baslikUretim class'lı öğelere sırayla yazıyı koy
+//   textContainersBaslik.forEach(textContainerBaslik => {
+//     textContainerBaslik.textContent = textsBaslik[currentTextIndex];
+//     textContainerBaslik.classList.add('visible');
+//   });
+
+//   textContainersMiktar1.forEach(textContainerMiktar => {
+//     textContainerMiktar.textContent = textsMiktar1[currentTextIndex];
+//     textContainerMiktar.classList.add('visible');
+//   });
+
+//   textContainersMiktar2.forEach(textContainerMiktar => {
+//     textContainerMiktar.textContent = textsMiktar2[currentTextIndex];
+//     textContainerMiktar.classList.add('visible');
+//   });
+
+//   // 3 saniye sonra yazıyı kaybet
+//   setTimeout(() => {
+//     textContainer.classList.remove('visible');
+//     textContainersBaslik.forEach(textContainerBaslik => {
+//       textContainerBaslik.classList.remove('visible');
+//     });
+
+//     textContainersMiktar1.forEach(textContainerMiktar => {
+//       textContainerMiktar.classList.remove('visible');
+//     });
+
+//     textContainersMiktar2.forEach(textContainerMiktar => {
+//       textContainerMiktar.classList.remove('visible');
+//     });
+
+//     // 1 saniye sonra yeni yazıyı getir
+//     setTimeout(() => {
+//       currentTextIndex = (currentTextIndex + 1) % texts.length;
+
+//       genelPlan = 0;
+//       genelUretim = 0;
+
+//       miktarAl('BG-1');
+//       miktarAl('PG-1');
+//       miktarAl('ŞG-1');
+//       miktarAl('SG-1');
+//       miktarAl('VG-1');
+//       miktarAl('GG-1');
+
+//       showNextText();
+//     }, 1000); // Fade-out süresi (1 saniye)
+//   }, 3000); // Görünür olma süresi (3 saniye)
+// }
+
+updateMiktar();
 
 // axios.defaults.withCredentials = true;
 // axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -115,7 +206,7 @@ function zamanAl() {
 }
 
 function mesajAl() {
-var mesaj = 'Verilerimizi zamanında, eksiksiz ve doğru girelim!';
+  var mesaj = 'Verilerimizi zamanında, eksiksiz ve doğru girelim!';
   axios
     .get('/dashboards/mesajal')
     .then(function (response) {
@@ -157,9 +248,26 @@ function miktarAl(ist) {
 
         texts[0] = '%' + yuzde;
         texts[1] = yorum;
-        textsMiktar[0] = plan.toplam_planlanan;
 
-        textsMiktar[1] = plan.toplam_uretim;
+        if (ist == 'BG-1') {
+          textsMiktar1[0] = plan.toplam_planlanan;
+          textsMiktar1[1] = plan.toplam_uretim;
+        } else if (ist == 'PG-1') {
+          textsMiktar2[0] = plan.toplam_planlanan;
+          textsMiktar2[1] = plan.toplam_uretim;
+        } else if (ist == 'ŞG-1') {
+          textsMiktar3[0] = plan.toplam_planlanan;
+          textsMiktar3[1] = plan.toplam_uretim;
+        } else if (ist == 'SG-1') {
+          textsMiktar4[0] = plan.toplam_planlanan;
+          textsMiktar4[1] = plan.toplam_uretim;
+        } else if (ist == 'VG-1') {
+          textsMiktar5[0] = plan.toplam_planlanan;
+          textsMiktar5[1] = plan.toplam_uretim;
+        } else if (ist == 'GG-1') {
+          textsMiktar6[0] = plan.toplam_planlanan;
+          textsMiktar6[1] = plan.toplam_uretim;
+        }
 
         $('#' + ist + 'Plan').html(plan.toplam_planlanan);
         //$('#' + ist + 'Uretilen').html(textsMiktar[1]);
@@ -185,5 +293,5 @@ function miktarAl(ist) {
 setInterval(() => {
   zamanAl();
   mesajAl();
-console.log(1);
+  console.log(1);
 }, 3000);
