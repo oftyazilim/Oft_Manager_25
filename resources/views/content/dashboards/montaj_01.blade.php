@@ -26,147 +26,179 @@
 
 
 @section('layoutContent')
-
-
     <div class="card m-1">
-        <div class="border rounded p-2">
-            <h6 class="centered-div " id="guncelleme" style="font-size: 24px; justify-content: right;
-            padding-right: 10px; color:limegreen;">
+        <div class="row border rounded p-2">
+            <div class="col-6 sola-div">
+                <img class="logo justify-content-center" src="{{ asset('assets/img/logoson.png') }}" alt="">
+                <h3 class="mt-7 ms-3 ">OFT Yazılım</h3>
+            </div>
+            <h6 class="col-6 saga-div" id="guncelleme" style="font-size: 24px; padding-right: 10px; color:limegreen;">
                 Son Güncelleme: 05.09.2024 23:00
             </h6>
+
         </div>
     </div>
 
     <div class="custom-row">
 
-        <div class="custom-col card m-1">
-            <div class="card-header">BORU</div>
-            <div class="card-body  p-2 m-3">
+        <div class="custom-col card m-1 ">
+            <div class="card-header pt-0 m-0">BORU</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" id="boruPlan" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="BG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" id="boruUretilen" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="BG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" id="boruKalan" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="BG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4  id="boruAnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                <div class="border rounded p-2 mt-2">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="BG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="BG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="custom-col card m-1">
-            <div class="card-header">POMPA</div>
-            <div class="card-body  p-2 m-3">
+            <div class="card-header pt-0 m-0">POMPA</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="PG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="PG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="PG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4 class="miktar-yuzde" style="color: rgb(217, 227, 73)">%80</h4>
+                <div class="border rounded p-2 mt-2">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="PG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="PG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="custom-col card m-1">
-            <div class="card-header">ŞASE</div>
-            <div class="card-body  p-2 m-3">
+            <div class="card-header pt-0 m-0">ŞASE</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="ŞG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="ŞG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="ŞG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4 class="miktar-yuzde" >%80</h4>
+                <div class="border rounded p-2 mt-2">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="ŞG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="ŞG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="custom-col card m-1">
-            <div class="card-header">SİFON</div>
-            <div class="card-body  p-2 m-3">
+            <div class="card-header pt-0 m-0">SİFON</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="SG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="SG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="SG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4 class="miktar-yuzde" style="color: rgb(217, 227, 73)">%80</h4>
+                <div class="border rounded p-2 mt-2">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="SG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="SG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="custom-col card m-1">
-            <div class="card-header">VENTURİ</div>
-            <div class="card-body  p-2 m-3">
+            <div class="card-header pt-0 m-0">VENTURİ</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="VG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="VG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="VG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4 class="miktar-yuzde" style="color: rgb(217, 227, 73)">%80</h4>
+                <div class="border rounded p-2 mt-2">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="VG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="VG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="custom-col card m-1">
-            <div class="card-header">GALVANİZ</div>
-            <div class="card-body  p-2 m-3">
+            <div class="card-header pt-0 m-0">GALVANİZ</div>
+            <div class="card-body p-0">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
-                    <h4 class="miktar" style="color: limegreen">0</h4>
+                    <h4 class="miktar" id="GG-1Plan" style="color: limegreen">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Üretilen</h6>
-                    <h4 class="miktar" style="color: rgb(139, 136, 236)">0</h4>
+                <div class="border rounded p-2 mt-2">
+                  <h5 class="text-center baslik">Üretilen</h5>
+                    <h3 class="baslikUretim fade-text text-center" style="font-size: 20px; margin-top: -20px;"></h3>
+                    <h4 class="miktarUretim fade-text miktar" id="GG-1Uretilen" style="font-size: 100px; margin-top: 20px; color: rgb(139, 136, 236)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
+                <div class="border rounded p-2 mt-2">
                     <h6 class="text-center baslik">Kalan</h6>
-                    <h4 class="miktar" style="color: rgb(210, 138, 138)">0</h4>
+                    <h4 class="miktar" id="GG-1Kalan" style="color: rgb(210, 138, 138)">0</h4>
                 </div>
-                <div class="border rounded p-2 mt-3">
-                    <h6 class="text-center baslik">Anlık Performans</h6>
-                    <h4 class="miktar-yuzde" style="color: rgb(217, 227, 73)">%80</h4>
+                <div class="border rounded p-2 mt-1">
+                    <h6 class="text-center baslik">Anlık Perfrmns</h6>
+                    <h4 id="GG-1AnlikYuzde" class="miktar-yuzde"><span class="yuzdeIsareti">%0</span></h4>
+                    <div class="progress" style="height: 20px;">
+                        <div id="GG-1Progress" class="progress-bar" role="progressbar" style="width: 0%;"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,10 +212,11 @@
         <div class="custom-col card m-1" style="height: 150px; ">
             <div class="card-body p-1 m-1">
                 <div class="border rounded p-2">
-                    <h6 class="text-center baslik">Gnl Performans</h6>
-                    <h4 id="text-container" class="fade-text text-center mt-4 pt-3"
+                    <h6 class="text-center baslik">Genel Perfrmns</h6>
+                    <h4 id="text-container" class="fade-text1 text-center mt-4 pt-3"
                         style="color: limegreen;
-                    font-size: 70px; font-weight: bold;">%70
+                    font-size: 70px; font-weight: bold;"><span
+                            class="yuzdeIsareti">%0</span>
                     </h4>
                 </div>
             </div>
@@ -192,7 +225,7 @@
             <div class="card-body  p-1 m-1">
                 <div class="border rounded p-2">
                     <div class="marquee">
-                        <h1 class="marquee-text">Sevgili arkadaşlar verilerimizi zamanında, eksiksiz ve doğru girelim!</h1>
+                        <h1 id="altMesaj" class="marquee-text"></h1>
                     </div>
                 </div>
             </div>

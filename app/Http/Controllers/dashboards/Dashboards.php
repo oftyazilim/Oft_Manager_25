@@ -33,4 +33,8 @@ class Dashboards extends Controller
       return response()->json($plan);
   }
 
+  public function mesajAl(){
+    $mesaj = DB::table('OFTT_01_AYARLAR')->select('DEGER')->where('TANIM', 'MESAJ1')->first();
+    return response()->json($mesaj);
+  }
 }
