@@ -16,24 +16,48 @@ class Dashboards extends Controller
     return view('content.dashboards.montaj_01', ['pageConfigs' => $pageConfigs]);
   }
 
-  public function zamanAl(){
+  public function zamanAl()
+  {
     $veri = StokHrkt::select('KAYITTARIH')->orderBy('ID', 'desc')->first();
     return response()->json($veri);
   }
 
   public function miktarAl(Request $request)
   {
-      $istasyon = $request->query('param1');
-      $plan = DB::table('OFTV_01_EMIRLERIS')
-              ->where('ISTKOD', $istasyon)
-              ->select(DB::raw('SUM(PLANLANANMIKTAR) as toplam_planlanan, SUM(URETIMMIKTAR) as toplam_uretim'))
-              ->first();
+    $istasyon = $request->query('param1');
+    $planHafta = DB::table('OFTV_01_EMIRLERISHFT')
+      ->where('ISTKOD', $istasyon)
+      ->select(DB::raw('SUM(PLANLANANMIKTAR) as toplam_planlanan, SUM(URETIMMIKTAR) as toplam_uretim'))
+      ->first();
+    $urtGun = DB::table('OFTV_01_STOKHRKTGUN')
+      ->where('ISTKOD', $istasyon)
+      ->select(DB::raw('SUM(MIKTAR) as toplam_uretim'))
+      ->first();
 
-      // JSON olarak döndür
-      return response()->json($plan);
+    $urtHafta = DB::table('OFTV_01_STOKHRKTHFT')
+      ->where('ISTKOD', $istasyon)
+      ->select(DB::raw('SUM(MIKTAR) as toplam_uretim'))
+      ->first();
+
+    if ($planHafta) {
+      return response()->json([
+        'planHafta' => $planHafta,
+        'urtGun' => $urtGun,
+        'urtHafta' => $urtHafta,
+      ]);
+    } else {
+      return response()->json([
+        'message' => 'Internal Server Error',
+        'code' => 500,
+        'planHafta' => [],
+        'urtHafta' => [],
+        'urtGun' => [],
+      ]);
+    }
   }
 
-  public function mesajAl(){
+  public function mesajAl()
+  {
     $mesaj = DB::table('OFTT_01_AYARLAR')->select('DEGER')->where('TANIM', 'MESAJ1')->first();
     return response()->json($mesaj);
   }

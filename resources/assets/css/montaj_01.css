@@ -138,5 +138,12 @@
 }
 
 .yuzdeIsareti {
-  font-size: 34px;
+  font-size: 44px;
+}
+
+.progress
+{
+  height: 10px;
+  color: lightgray;
+  margin-top: 20px;
 }
