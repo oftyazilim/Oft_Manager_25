@@ -12,6 +12,7 @@ use App\Http\Controllers\laravel_example\UserManagement;
 use App\Http\Controllers\planlama\Mamuller;
 use App\Http\Controllers\planlama\Emirler;
 use App\Http\Controllers\planlama\Uretimler;
+use App\Http\Controllers\MachineController;
 use App\Models\StokHrkt;
 
 Route::get('/', [Landing::class, 'index'])->name('front-pages-landing');
@@ -19,6 +20,10 @@ Route::get('/dashboards/montaj_01', [Dashboards::class, 'montaj_01'])->name('das
 Route::get('/dashboards/zamanal', [Dashboards::class, 'zamanAl'])->name('dashboards-zamanal');
 Route::get('/dashboards/miktaral', [Dashboards::class, 'miktarAl'])->name('dashboards-miktaral');
 Route::get('/dashboards/mesajal', [Dashboards::class, 'mesajAl'])->name('dashboards-mesajal');
+
+Route::get('/performance', [MachineController::class, 'getPerformance']);
+
+
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {

@@ -181,6 +181,9 @@ function miktarAl(ist) {
         texts[0] = '%' + yuzde;
         texts[1] = yorum;
 
+        if (urtHafta == null) urtHafta = 0;
+        if (urtGun == null) urtGun=0;
+        
         updateMiktar1(ist, urtHafta, urtGun);
 
         $('#' + ist + 'Plan').html(plnHafta);
@@ -209,8 +212,8 @@ function miktarAl(ist) {
 // Miktarları güncelleme fonksiyonu
 function updateMiktar1(ist, hafta, gun) {
   if (miktarTexts[ist]) {
-    miktarTexts[ist][0] = hafta;
-    miktarTexts[ist][1] = gun;
+    miktarTexts[ist][0] = hafta.toFixed(0);
+    miktarTexts[ist][1] = gun.toFixed(0);
   }
 }
 
@@ -220,3 +223,62 @@ setInterval(() => {
   mesajAl();
   console.log(1);
 }, 3000);
+
+
+
+    // İşe başlama saati (08:00)
+    const startHour = 8;
+
+    // Mevcut zaman bilgisi
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+const totalDays = 6;  // Haftada 6 gün çalışma
+const totalHoursPerDay = 8; // Günde 8 saat
+const currentDayOfWeek = new Date().getDay();  // Haftanın günü (Pazartesi: 1)
+
+// Toplam haftalık çalışma saatini hesapla
+const totalWorkHoursInWeek = totalDays * totalHoursPerDay;
+
+// Haftanın mevcut zamanına kadar olması gereken iş emri sayısını hesapla
+const elapsedDays = currentDayOfWeek - 1;  // Pazartesi 0 olsun
+const elapsedHoursToday = currentHour; // 5. saat
+const elapsedWorkHours = (elapsedDays * totalHoursPerDay) + elapsedHoursToday;
+
+// Performans verilerini almak için AJAX kullan
+async function getMachinePerformance() {
+    const response = await fetch('/performance'); // Laravel'den veri çek
+    const machines = await response.json();
+
+    machines.forEach(machine => {
+        const expectedOrders = (elapsedWorkHours / totalWorkHoursInWeek) * machine.weeklyTarget; // Haftalık hedefe göre
+        const performance = (machine.completedOrders / expectedOrders) * 100;  // Gerçekleşene göre yüzde hesaplama
+
+        console.log(`Makine: ${machine.name}`);
+        console.log(`Planlanan iş emri: ${machine.weeklyTarget.toFixed(2)}`);
+        console.log(`Beklenen iş emri: ${expectedOrders.toFixed(2)}`);
+        console.log(`Gerçekleşen iş emri: ${machine.completedOrders}`);
+        console.log(`Performans: ${performance.toFixed(2)}%`);
+    });
+
+
+
+
+
+
+
+// İşe başlanılan saatten şu ana kadar geçen zamanı hesapla
+let hoursWorked = currentHour - startHour;
+let minutesWorked = currentMinute;
+
+// Eğer saat 08:00'dan önce ise 0 çalışılan saat göster
+if (hoursWorked < 0) {
+    hoursWorked = 0;
+    minutesWorked = 0;
+}
+
+console.log(`Çalışılan süre: ${hoursWorked} saat ve ${minutesWorked} dakika`);
+
+}
+
+getMachinePerformance();
