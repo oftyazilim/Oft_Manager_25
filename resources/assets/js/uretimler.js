@@ -262,19 +262,19 @@ $(function () {
         });
 
         // success sweetalert
-        Swal.fire({
-          icon: 'success',
-          title: 'Silindi!',
-          text: 'Kullanıcı silindi',
-          confirmButtonText: 'Kapat',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
+        // Swal.fire({
+        //   icon: 'success',
+        //   title: 'Silindi!',
+        //   text: 'Üretim girişi silindi',
+        //   confirmButtonText: 'Kapat',
+        //   customClass: {
+        //     confirmButton: 'btn btn-success'
+        //   }
+        // });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire({
           title: 'Vazgeçildi',
-          text: 'Kullanıcı silinmedi!',
+          text: 'Üretim girişi silinmedi!',
           icon: 'error',
           confirmButtonText: 'Kapat',
           customClass: {

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 // Gösterilecek yazılar
 const texts = ['0', '...'];
 const textsBaslik = ['(Haftalık)', '(Günlük)'];
@@ -10,6 +9,11 @@ const textsMiktar3 = ['0', '0'];
 const textsMiktar4 = ['0', '0'];
 const textsMiktar5 = ['0', '0'];
 const textsMiktar6 = ['0', '0'];
+const sureler = ['0', '0'];
+let oran = 0;
+var genelPlan = 0;
+var genelUretim = 0;
+var hedefGenel = 0;
 
 const miktarTexts = {
   'BG-1': textsMiktar1,
@@ -55,13 +59,34 @@ function hideMultipleTextContents(containers) {
 }
 
 // Miktar güncelleme işlemini yapan fonksiyon
-function updateMiktar() {
-  genelPlan = 0;
-  genelUretim = 0;
+// async function updateMiktar() {
+//   genelPlan = 0;
+//   genelUretim = 0;
+//   hedefGenel = 0;
+//   const grupKodlari = ['BG-1', 'PG-1', 'ŞG-1', 'SG-1', 'VG-1', 'GG-1'];
 
-  const grupKodlari = ['BG-1', 'PG-1', 'ŞG-1', 'SG-1', 'VG-1', 'GG-1'];
-  grupKodlari.forEach(kod => miktarAl(kod));
-}
+//   // Asenkron fonksiyonları tamamlanana kadar beklemek için 'Promise.all' kullanıyoruz
+//    await Promise.all(grupKodlari.map(async (kod) => {
+//     await miktarAl(kod);
+//   }));
+
+//   console.log(genelUretim);
+//   var hedefGenel = genelPlan * (90 / 100);
+//   var yuzde = Math.round((genelUretim / hedefGenel) * 100);
+//   var yorum = '';
+
+//   if (yuzde <= 30) yorum = 'berbat';
+//   else if (yuzde > 30 && yuzde <= 40) yorum = 'kötü';
+//   else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
+//   else if (yuzde > 50 && yuzde <= 65) yorum = 'eh işte';
+//   else if (yuzde > 65 && yuzde <= 80) yorum = 'iyi';
+//   else if (yuzde > 80 && yuzde <= 90) yorum = 'çok iyi';
+//   else if (yuzde > 90 && yuzde <= 99) yorum = 'harika';
+//   else if (yuzde >= 99) yorum = 'süper';
+
+//   texts[0] = '%' + yuzde;
+//   texts[1] = yorum;
+// }
 
 // Yazıları sırayla gösteren fonksiyon
 function showNextText() {
@@ -98,11 +123,8 @@ function showNextText() {
 }
 
 updateMiktar();
-// İlk metni göster
 showNextText();
 
-var genelPlan = 0;
-var genelUretim = 0;
 
 function zamanAl() {
   axios
@@ -136,7 +158,20 @@ function mesajAl() {
   axios
     .get('/dashboards/mesajal')
     .then(function (response) {
-      mesaj = response.data.DEGER;
+      if (response.data && response.data.sureler) {
+        sureler[0] = response.data.sureler.calisma || 0;
+        sureler[1] = response.data.sureler.plan || 0;
+
+        if (sureler[0] > 0 && sureler[1] > 0) {
+          oran = Math.round((sureler[0] / sureler[1]) * 100);
+        } else {
+          oran = 0;
+        }
+      } else {
+        console.error("Veri bulunamadı");
+      }
+
+      mesaj = response.data.mesaj.DEGER;
       if (mesaj == '') mesaj = 'Arkadaşlar verilerimizi zamanında, eksiksiz ve doğru girelim!';
       $('#altMesaj').html(mesaj);
     })
@@ -146,68 +181,123 @@ function mesajAl() {
     });
 }
 
-function miktarAl(ist) {
-  axios
-    .get('/dashboards/miktaral', {
+async function miktarAl(ist) {
+  try {
+    const response = await axios.get('/dashboards/miktaral', {
       params: {
         param1: ist
       }
-    })
-    .then(function (response) {
-      var plan = response.data;
-      var plnHafta =plan.planHafta.toplam_planlanan;
-      var urtGun = plan.urtGun.toplam_uretim;
-      var urtHafta = plan.urtHafta.toplam_uretim;
-
-      if (plnHafta == null) plnHafta = 0;
-      if (urtHafta == null) urtHafta = 0;
-      if (urtGun == null) urtGun = 0;
-
-      if (plan && plnHafta !== null) {
-        genelPlan += plnHafta;
-        genelUretim += urtHafta;
-        var yuzde = Math.round((genelUretim / genelPlan) * 100);
-        var yorum = '';
-
-        if (yuzde <= 30) yorum = 'berbat';
-        else if (yuzde > 30 && yuzde <= 40) yorum = 'kötü';
-        else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
-        else if (yuzde > 50 && yuzde <= 65) yorum = 'eh işte';
-        else if (yuzde > 65 && yuzde <= 80) yorum = 'iyi';
-        else if (yuzde > 80 && yuzde <= 90) yorum = 'çok iyi';
-        else if (yuzde > 90 && yuzde <= 99) yorum = 'harika';
-        else if (yuzde >= 99) yorum = 'süper';
-
-        texts[0] = '%' + yuzde;
-        texts[1] = yorum;
-
-        if (urtHafta == null) urtHafta = 0;
-        if (urtGun == null) urtGun=0;
-        
-        updateMiktar1(ist, urtHafta, urtGun);
-
-        $('#' + ist + 'Plan').html(plnHafta);
-        var kalan = plnHafta - urtHafta;
-        $('#' + ist + 'Kalan').html(kalan);
-        var yuzde = Math.round((urtHafta / plnHafta) * 100);
-        // console.log(yuzde);
-        $('#' + ist + 'Progress').css('width', yuzde + '%');
-        $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
-
-    $('#' + ist + 'AnlikYuzde').html(yuzde);
-
-      } else {
-        $('#' + ist + 'Plan').html('0');
-        $('#' + ist + 'Uretilen').html('0');
-        $('#' + ist + 'Kalan').html('0');
-        $('#' + ist + 'AnlikYuzde').html('<span class="yuzdeIsareti">%</span>0');
-      }
-    })
-    .catch(function (error) {
-      console.error('Plan çekme hatası:', error);
     });
+
+    const plan = response.data;
+    let plnHafta = plan.planHafta.toplam_planlanan || 0;
+    let urtGun = plan.urtGun.toplam_uretim || 0;
+    let urtHafta = plan.urtHafta.toplam_uretim || 0;
+
+    // genelPlan ve genelUretim güncelleniyor
+    genelPlan += plnHafta;
+    genelUretim += urtHafta;
+
+    // console.log(ist + ' için genelUretim: ' + genelUretim);
+
+    updateMiktar1(ist, urtHafta, urtGun);
+
+    const hedef = plnHafta * (oran / 100);
+    $('#' + ist + 'Plan').html(plnHafta);
+    const kalan = plnHafta - urtHafta;
+    $('#' + ist + 'Kalan').html(kalan);
+    const yuzde = Math.round((urtHafta / hedef) * 100);
+    $('#' + ist + 'Progress').css('width', yuzde + '%');
+    $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
+    $('#' + ist + 'AnlikYuzde').html(yuzde);
+  } catch (error) {
+    console.error('Plan çekme hatası:', error);
+  }
 }
 
+// updateMiktar fonksiyonu da asenkron olacak
+async function updateMiktar() {
+  genelPlan = 0;
+  genelUretim = 0;
+  hedefGenel = 0;
+
+  const grupKodlari = ['BG-1', 'PG-1', 'ŞG-1', 'SG-1', 'VG-1', 'GG-1'];
+
+  // Tüm grupKodlari için miktarAl fonksiyonunu çağırıyoruz ve sonuçları bekliyoruz
+  await Promise.all(grupKodlari.map(kod => miktarAl(kod)));
+
+  // console.log('Tüm grup kodları için güncel genelUretim: ' + genelPlan);
+
+  hedefGenel = genelPlan * (oran / 100);
+  const yuzde = Math.round((genelUretim / hedefGenel) * 100);
+
+  let yorum = '';
+  if (yuzde <= 20) yorum = 'berbat';
+  else if (yuzde > 20 && yuzde <= 40) yorum = 'kötü';
+  else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
+  else if (yuzde > 50 && yuzde <= 65) yorum = 'eh işte';
+  else if (yuzde > 65 && yuzde <= 80) yorum = 'iyi';
+  else if (yuzde > 80 && yuzde <= 90) yorum = 'çok iyi';
+  else if (yuzde > 90 && yuzde <= 99) yorum = 'harika';
+  else if (yuzde >= 99) yorum = 'süper';
+
+  texts[0] = '%' + yuzde;
+  texts[1] = yorum;
+}
+
+
+// async function miktarAl(ist) {
+//   axios
+//     .get('/dashboards/miktaral', {
+//       params: {
+//         param1: ist
+//       }
+//     })
+//     .then(function (response) {
+//       const plan = response.data;
+//       let plnHafta = plan.planHafta.toplam_planlanan;
+//       let urtGun = plan.urtGun.toplam_uretim;
+//       let urtHafta = plan.urtHafta.toplam_uretim;
+
+//       if (plnHafta == null) plnHafta = 0;
+//       if (urtHafta == null) urtHafta = 0;
+//       if (urtGun == null) urtGun = 0;
+
+//       if (plan && plnHafta !== null) {
+
+
+//         genelPlan += plnHafta;
+//         genelUretim += urtHafta;
+
+//         console.log(ist + genelUretim);
+
+//         if (urtHafta == null) urtHafta = 0;
+//         if (urtGun == null) urtGun = 0;
+
+//         updateMiktar1(ist, urtHafta, urtGun);
+
+//         var hedef = plnHafta * (90 / 100);
+
+//         $('#' + ist + 'Plan').html(plnHafta);
+//         var kalan = plnHafta - urtHafta;
+//         $('#' + ist + 'Kalan').html(kalan);
+//         var yuzde = Math.round((urtHafta / hedef) * 100);
+//         // console.log(yuzde);
+//         $('#' + ist + 'Progress').css('width', yuzde + '%');
+//         $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
+
+//         $('#' + ist + 'AnlikYuzde').html(yuzde);
+//       } else {
+//         $('#' + ist + 'Plan').html('0');
+//         $('#' + ist + 'Uretilen').html('0');
+//         $('#' + ist + 'Kalan').html('0');
+//         $('#' + ist + 'AnlikYuzde').html('<span class="yuzdeIsareti">%</span>0');
+//       }
+//     })
+//     .catch(function (error) {
+//       console.error('Plan çekme hatası:', error);
+//     });
+// }
 
 // Miktarları güncelleme fonksiyonu
 function updateMiktar1(ist, hafta, gun) {
@@ -221,64 +311,54 @@ function updateMiktar1(ist, hafta, gun) {
 setInterval(() => {
   zamanAl();
   mesajAl();
-  console.log(1);
 }, 3000);
 
+// İşe başlama saati (08:00)
+const startHour = 8;
 
-
-    // İşe başlama saati (08:00)
-    const startHour = 8;
-
-    // Mevcut zaman bilgisi
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
-const totalDays = 6;  // Haftada 6 gün çalışma
+// Mevcut zaman bilgisi
+const now = new Date();
+const currentHour = now.getHours();
+const currentMinute = now.getMinutes();
+const totalDays = 6; // Haftada 6 gün çalışma
 const totalHoursPerDay = 8; // Günde 8 saat
-const currentDayOfWeek = new Date().getDay();  // Haftanın günü (Pazartesi: 1)
+const currentDayOfWeek = new Date().getDay(); // Haftanın günü (Pazartesi: 1)
 
 // Toplam haftalık çalışma saatini hesapla
 const totalWorkHoursInWeek = totalDays * totalHoursPerDay;
 
 // Haftanın mevcut zamanına kadar olması gereken iş emri sayısını hesapla
-const elapsedDays = currentDayOfWeek - 1;  // Pazartesi 0 olsun
+const elapsedDays = currentDayOfWeek - 1; // Pazartesi 0 olsun
 const elapsedHoursToday = currentHour; // 5. saat
-const elapsedWorkHours = (elapsedDays * totalHoursPerDay) + elapsedHoursToday;
+const elapsedWorkHours = elapsedDays * totalHoursPerDay + elapsedHoursToday;
 
 // Performans verilerini almak için AJAX kullan
-async function getMachinePerformance() {
-    const response = await fetch('/performance'); // Laravel'den veri çek
-    const machines = await response.json();
+// async function getMachinePerformance() {
+//   const response = await fetch('/performance'); // Laravel'den veri çek
+//   const machines = await response.json();
 
-    machines.forEach(machine => {
-        const expectedOrders = (elapsedWorkHours / totalWorkHoursInWeek) * machine.weeklyTarget; // Haftalık hedefe göre
-        const performance = (machine.completedOrders / expectedOrders) * 100;  // Gerçekleşene göre yüzde hesaplama
+//   machines.forEach(machine => {
+//     const expectedOrders = (elapsedWorkHours / totalWorkHoursInWeek) * machine.weeklyTarget; // Haftalık hedefe göre
+//     const performance = (machine.completedOrders / expectedOrders) * 100; // Gerçekleşene göre yüzde hesaplama
 
-        console.log(`Makine: ${machine.name}`);
-        console.log(`Planlanan iş emri: ${machine.weeklyTarget.toFixed(2)}`);
-        console.log(`Beklenen iş emri: ${expectedOrders.toFixed(2)}`);
-        console.log(`Gerçekleşen iş emri: ${machine.completedOrders}`);
-        console.log(`Performans: ${performance.toFixed(2)}%`);
-    });
+//     console.log(`Makine: ${machine.name}`);
+//     console.log(`Planlanan iş emri: ${machine.weeklyTarget.toFixed(2)}`);
+//     console.log(`Beklenen iş emri: ${expectedOrders.toFixed(2)}`);
+//     console.log(`Gerçekleşen iş emri: ${machine.completedOrders}`);
+//     console.log(`Performans: ${performance.toFixed(2)}%`);
+//   });
 
+//   // İşe başlanılan saatten şu ana kadar geçen zamanı hesapla
+//   let hoursWorked = currentHour - startHour;
+//   let minutesWorked = currentMinute;
 
+//   // Eğer saat 08:00'dan önce ise 0 çalışılan saat göster
+//   if (hoursWorked < 0) {
+//     hoursWorked = 0;
+//     minutesWorked = 0;
+//   }
 
+//   console.log(`Çalışılan süre: ${hoursWorked} saat ve ${minutesWorked} dakika`);
+// }
 
-
-
-
-// İşe başlanılan saatten şu ana kadar geçen zamanı hesapla
-let hoursWorked = currentHour - startHour;
-let minutesWorked = currentMinute;
-
-// Eğer saat 08:00'dan önce ise 0 çalışılan saat göster
-if (hoursWorked < 0) {
-    hoursWorked = 0;
-    minutesWorked = 0;
-}
-
-console.log(`Çalışılan süre: ${hoursWorked} saat ve ${minutesWorked} dakika`);
-
-}
-
-getMachinePerformance();
+//getMachinePerformance();
