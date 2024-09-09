@@ -99,8 +99,8 @@ function zamanAl() {
   axios
     .get('/dashboards/zamanal')
     .then(function (response) {
-      // console.log(response.data);
-      if (!response.data == '') {
+      // console.log(response.data.KAYITTARIH);
+      if (response.data.KAYITTARIH) {
         var tarih = response.data;
         var unixTimestamp = Math.floor(new Date(tarih.KAYITTARIH).getTime() / 1000);
         var excelDate = 25569 + (unixTimestamp + 10800) / 86400;
@@ -200,7 +200,7 @@ async function updateMiktar() {
 
   // console.log('Tüm grup kodları için güncel genelUretim: ' + genelPlan);
 
-  console.log(genelPlan);
+  // console.log(genelPlan);
   hedefGenel = genelPlan; // * (oran / 100);
   let yuzde = 0;
   if (genelPlan > 0) Math.round((genelUretim / hedefGenel) * 100);

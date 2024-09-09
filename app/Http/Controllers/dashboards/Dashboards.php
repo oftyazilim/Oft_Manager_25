@@ -18,7 +18,7 @@ class Dashboards extends Controller
 
   public function zamanAl()
   {
-    $veri = StokHrkt::select('KAYITTARIH')->orderBy('ID', 'desc')->first();
+    $veri = StokHrkt::select('KAYITTARIH')->where('SILINDI', false)->orderBy('ID', 'desc')->first();
     return response()->json($veri);
   }
 

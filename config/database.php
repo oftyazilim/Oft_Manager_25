@@ -97,11 +97,11 @@ return [
     'sqlsrv' => [
       'driver' => 'sqlsrv',
       'url' => env('DB_URL'),
-      'host' => env('DB_HOST', '127.0.0.1'),
+      'host' => env('DB_HOST', '192.168.1.215'),
       'port' => env('DB_PORT', '1433'),
       'database' => env('DB_DATABASE', 'OFT_MES'),
       'username' => env('DB_USERNAME', 'sa'),
-      'password' => env('DB_PASSWORD', 'reallyStrongPwd123'),
+      'password' => env('DB_PASSWORD', '?Ot2021!Om*'),
       'charset' => env('DB_CHARSET', 'utf8'),
       'prefix' => '',
       'prefix_indexes' => true,
