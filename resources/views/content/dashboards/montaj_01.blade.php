@@ -15,7 +15,6 @@
 
 <!-- Page Scripts -->
 @section('page-style')
-    @vite(['resources/assets/css/montaj_01.css'])
 @endsection
 
 <!-- Page Scripts -->
