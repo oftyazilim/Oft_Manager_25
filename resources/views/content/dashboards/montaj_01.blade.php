@@ -43,7 +43,7 @@
 
         <div class="custom-col card m-1 ">
             <div class="card-header pt-0 m-0">BORU</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="BG-1Plan" style="color: limegreen">0</h4>
@@ -73,7 +73,7 @@
 
         <div class="custom-col card m-1">
             <div class="card-header pt-0 m-0">POMPA</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="PG-1Plan" style="color: limegreen">0</h4>
@@ -102,7 +102,7 @@
 
         <div class="custom-col card m-1">
             <div class="card-header pt-0 m-0">ŞASE</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="ŞG-1Plan" style="color: limegreen">0</h4>
@@ -131,7 +131,7 @@
 
         <div class="custom-col card m-1">
             <div class="card-header pt-0 m-0">SİFON</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="SG-1Plan" style="color: limegreen">0</h4>
@@ -160,7 +160,7 @@
 
         <div class="custom-col card m-1">
             <div class="card-header pt-0 m-0">VENTURİ</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="VG-1Plan" style="color: limegreen">0</h4>
@@ -189,7 +189,7 @@
 
         <div class="custom-col card m-1">
             <div class="card-header pt-0 m-0">GALVANİZ</div>
-            <div class="card-body p-0">
+            <div class="card-body p-0 m-1">
                 <div class="border rounded p-2">
                     <h6 class="text-center baslik">Haftalık Plan</h6>
                     <h4 class="miktar" id="GG-1Plan" style="color: limegreen">0</h4>
