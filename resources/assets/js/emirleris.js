@@ -722,13 +722,14 @@ $(function () {
 
   $(document).on('click', '.uretim-gir', function () {
     var kayit_id = $(this).data('id');
-
+console.log(kayit_id);
     $('#modalCenterTitle').html('Üretim Girişi');
 
     $.get(`${baseUrl}emir-list\/${kayit_id}\/edit`, function (data) {
       $('#rec_id').val(kayit_id);
       $('#urun_id').val(data[0].ID);
       $('#mamul').val(data[0].TANIM);
+      // $('#miktarTemp').val(data[0].MIKTAR);
       $('#URETIMMIKTAR').val('');
       $('#NOTLAR1').val('');
       var today = new Date().toISOString().split('T')[0];

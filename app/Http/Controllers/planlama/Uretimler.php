@@ -151,7 +151,7 @@ class Uretimler extends Controller
       $operatorID = null;
     }
 
-    $hrkt = StokHrkt::find($kayitid)->select('ISEMRIID', 'MIKTAR', 'STOKID')->first();
+    $hrkt = StokHrkt::select('ISEMRIID', 'MIKTAR', 'STOKID')->where('ID', $kayitid)->first();
 
     $emir = Emir::find($hrkt->ISEMRIID);
     $emir->URETIMMIKTAR -= (int)$hrkt->MIKTAR;
@@ -187,12 +187,18 @@ class Uretimler extends Controller
       $operatorID = null;
     }
 
+    $hrkt = StokHrkt::select('ISEMRIID', 'MIKTAR', 'STOKID')->where('ID', $kayitid)->first();
 
     $emir = Emir::find($request->isemriid);
     try {
 
       $emir->URETIMMIKTAR += (int)$request->uretim_miktar -(int)$request->miktarTemp;
       $emir->save();
+
+      $mml = Mamul::find($hrkt->STOKID);
+      $mml->MEVCUT += (int)$request->uretim_miktar -(int)$request->miktarTemp;
+      $mml->GIREN += (int)$request->uretim_miktar -(int)$request->miktarTemp;
+      $mml->save();
 
       $hrkt = StokHrkt::find($kayitid);
       $hrkt->MIKTAR = (int)$request->uretim_miktar;

@@ -233,7 +233,7 @@ $(function () {
   // Delete Record
   $(document).on('click', '.delete-record', function () {
     var temp_id = $(this).data('id');
-
+console.log(temp_id);
     // sweetalert for confirmation of delete
     Swal.fire({
       title: 'Emin misiniz?',

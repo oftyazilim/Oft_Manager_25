@@ -36,6 +36,7 @@
             <div class="modal-content">
                 <input type="hidden" name="ID" id="rec_id">
                 <input type="hidden" name="URUNID" id="urun_id">
+                {{-- <input type="hidden" name="miktarTemp" id="miktarTemp"> --}}
                 <div class="modal-header">
                     <h3 class="modal-title" id="modalCenterTitle">Modal title</h3>
                 </div>
