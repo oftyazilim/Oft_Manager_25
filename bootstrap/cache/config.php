@@ -560,18 +560,18 @@
   ),
   'mail' => 
   array (
-    'default' => 'log',
+    'default' => 'smtp',
     'mailers' => 
     array (
       'smtp' => 
       array (
         'transport' => 'smtp',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'sandbox.smtp.mailtrap.io',
         'port' => '2525',
-        'encryption' => NULL,
-        'username' => NULL,
-        'password' => NULL,
+        'encryption' => 'tls',
+        'username' => '2c9934729a3a2b',
+        'password' => '0b58007ac11aab',
         'timeout' => NULL,
         'local_domain' => NULL,
       ),
@@ -622,7 +622,7 @@
     ),
     'from' => 
     array (
-      'address' => 'hello@example.com',
+      'address' => 'oft@windowslive.com',
       'name' => 'Laravel',
     ),
     'markdown' => 

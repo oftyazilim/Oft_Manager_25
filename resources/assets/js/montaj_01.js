@@ -58,36 +58,6 @@ function hideMultipleTextContents(containers) {
   containers.forEach(hideTextContent);
 }
 
-// Miktar güncelleme işlemini yapan fonksiyon
-// async function updateMiktar() {
-//   genelPlan = 0;
-//   genelUretim = 0;
-//   hedefGenel = 0;
-//   const grupKodlari = ['BG-1', 'PG-1', 'ŞG-1', 'SG-1', 'VG-1', 'GG-1'];
-
-//   // Asenkron fonksiyonları tamamlanana kadar beklemek için 'Promise.all' kullanıyoruz
-//    await Promise.all(grupKodlari.map(async (kod) => {
-//     await miktarAl(kod);
-//   }));
-
-//   console.log(genelUretim);
-//   var hedefGenel = genelPlan * (90 / 100);
-//   var yuzde = Math.round((genelUretim / hedefGenel) * 100);
-//   var yorum = '';
-
-//   if (yuzde <= 30) yorum = 'berbat';
-//   else if (yuzde > 30 && yuzde <= 40) yorum = 'kötü';
-//   else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
-//   else if (yuzde > 50 && yuzde <= 65) yorum = 'eh işte';
-//   else if (yuzde > 65 && yuzde <= 80) yorum = 'iyi';
-//   else if (yuzde > 80 && yuzde <= 90) yorum = 'çok iyi';
-//   else if (yuzde > 90 && yuzde <= 99) yorum = 'harika';
-//   else if (yuzde >= 99) yorum = 'süper';
-
-//   texts[0] = '%' + yuzde;
-//   texts[1] = yorum;
-// }
-
 // Yazıları sırayla gösteren fonksiyon
 function showNextText() {
   // Ana öğedeki metni güncelle
@@ -125,13 +95,13 @@ function showNextText() {
 updateMiktar();
 showNextText();
 
-
 function zamanAl() {
   axios
     .get('/dashboards/zamanal')
     .then(function (response) {
-      var tarih = response.data;
-      if (!tarih == '') {
+      // console.log(response.data);
+      if (!response.data == '') {
+        var tarih = response.data;
         var unixTimestamp = Math.floor(new Date(tarih.KAYITTARIH).getTime() / 1000);
         var excelDate = 25569 + (unixTimestamp + 10800) / 86400;
         var convertedUnixTimestamp = (excelDate - 25569) * 86400 - 10800;
@@ -149,7 +119,9 @@ function zamanAl() {
       $('#guncelleme').html('Son Veri Güncelleme: ' + formatliTarihSaat);
     })
     .catch(function (error) {
+      var formatliTarihSaat = '...';
       console.error('Zaman çekme hatası:', error);
+      $('#guncelleme').html('Son Veri Güncelleme: ' + formatliTarihSaat);
     });
 }
 
@@ -168,7 +140,7 @@ function mesajAl() {
           oran = 0;
         }
       } else {
-        console.error("Veri bulunamadı");
+        console.error('Veri bulunamadı');
       }
 
       mesaj = response.data.mesaj.DEGER;
@@ -193,7 +165,6 @@ async function miktarAl(ist) {
     let plnHafta = plan.planHafta.toplam_planlanan || 0;
     let urtGun = plan.urtGun.toplam_uretim || 0;
     let urtHafta = plan.urtHafta.toplam_uretim || 0;
-
     // genelPlan ve genelUretim güncelleniyor
     genelPlan += plnHafta;
     genelUretim += urtHafta;
@@ -202,11 +173,12 @@ async function miktarAl(ist) {
 
     updateMiktar1(ist, urtHafta, urtGun);
 
-    const hedef = plnHafta * (oran / 100);
+    const hedef = plnHafta; // * (oran / 100);
     $('#' + ist + 'Plan').html(plnHafta);
     const kalan = plnHafta - urtHafta;
     $('#' + ist + 'Kalan').html(kalan);
-    const yuzde = Math.round((urtHafta / hedef) * 100);
+    let yuzde = 0;
+    if (urtHafta > 0) yuzde = (urtHafta / hedef) * 100;
     $('#' + ist + 'Progress').css('width', yuzde + '%');
     $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
     $('#' + ist + 'AnlikYuzde').html(yuzde);
@@ -228,11 +200,13 @@ async function updateMiktar() {
 
   // console.log('Tüm grup kodları için güncel genelUretim: ' + genelPlan);
 
-  hedefGenel = genelPlan * (oran / 100);
-  const yuzde = Math.round((genelUretim / hedefGenel) * 100);
-
+  console.log(genelPlan);
+  hedefGenel = genelPlan; // * (oran / 100);
+  let yuzde = 0;
+  if (genelPlan > 0) Math.round((genelUretim / hedefGenel) * 100);
+  else yuzde = 0;
   let yorum = '';
-  if (yuzde <= 20) yorum = 'berbat';
+  if (yuzde <= 20) yorum = '...';
   else if (yuzde > 20 && yuzde <= 40) yorum = 'kötü';
   else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
   else if (yuzde > 50 && yuzde <= 65) yorum = 'eh işte';
@@ -244,7 +218,6 @@ async function updateMiktar() {
   texts[0] = '%' + yuzde;
   texts[1] = yorum;
 }
-
 
 // async function miktarAl(ist) {
 //   axios
@@ -264,7 +237,6 @@ async function updateMiktar() {
 //       if (urtGun == null) urtGun = 0;
 
 //       if (plan && plnHafta !== null) {
-
 
 //         genelPlan += plnHafta;
 //         genelUretim += urtHafta;
@@ -302,8 +274,8 @@ async function updateMiktar() {
 // Miktarları güncelleme fonksiyonu
 function updateMiktar1(ist, hafta, gun) {
   if (miktarTexts[ist]) {
-    miktarTexts[ist][0] = hafta.toFixed(0);
-    miktarTexts[ist][1] = gun.toFixed(0);
+    miktarTexts[ist][0] = Math.round(hafta);
+    miktarTexts[ist][1] = Math.round(gun);
   }
 }
 
