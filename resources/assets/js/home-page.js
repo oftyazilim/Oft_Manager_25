@@ -213,8 +213,8 @@ import ApexCharts from 'apexcharts';
 
   setInterval(
     function () {
-      updateWeeklyEarningReports(); // Fonksiyon çağrısı
-      veriAl(); // Eğer this bağlamında bir methodsa, doğru bağlamda çalıştığından emin olun
+      // updateWeeklyEarningReports();
+      // veriAl(); 
     }.bind(this),
     5000
   );

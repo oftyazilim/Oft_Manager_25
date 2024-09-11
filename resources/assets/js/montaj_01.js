@@ -178,7 +178,7 @@ async function miktarAl(ist) {
     const kalan = plnHafta - urtHafta;
     $('#' + ist + 'Kalan').html(kalan);
     let yuzde = 0;
-    if (urtHafta > 0) yuzde = (urtHafta / hedef) * 100;
+    if (urtHafta > 0) yuzde = Math.round((urtHafta / hedef) * 100);
     $('#' + ist + 'Progress').css('width', yuzde + '%');
     $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
     $('#' + ist + 'AnlikYuzde').html(yuzde);
@@ -203,9 +203,10 @@ async function updateMiktar() {
   // console.log(genelPlan);
   hedefGenel = genelPlan; // * (oran / 100);
   let yuzde = 0;
-  if (genelPlan > 0) Math.round((genelUretim / hedefGenel) * 100);
+  if (genelPlan > 0) yuzde = Math.round((genelUretim / hedefGenel) * 100);
   else yuzde = 0;
   let yorum = '';
+  // console.log(yuzde);
   if (yuzde <= 20) yorum = '...';
   else if (yuzde > 20 && yuzde <= 40) yorum = 'kötü';
   else if (yuzde > 40 && yuzde <= 50) yorum = 'sıkıntılı';
@@ -219,59 +220,6 @@ async function updateMiktar() {
   texts[1] = yorum;
 }
 
-// async function miktarAl(ist) {
-//   axios
-//     .get('/dashboards/miktaral', {
-//       params: {
-//         param1: ist
-//       }
-//     })
-//     .then(function (response) {
-//       const plan = response.data;
-//       let plnHafta = plan.planHafta.toplam_planlanan;
-//       let urtGun = plan.urtGun.toplam_uretim;
-//       let urtHafta = plan.urtHafta.toplam_uretim;
-
-//       if (plnHafta == null) plnHafta = 0;
-//       if (urtHafta == null) urtHafta = 0;
-//       if (urtGun == null) urtGun = 0;
-
-//       if (plan && plnHafta !== null) {
-
-//         genelPlan += plnHafta;
-//         genelUretim += urtHafta;
-
-//         console.log(ist + genelUretim);
-
-//         if (urtHafta == null) urtHafta = 0;
-//         if (urtGun == null) urtGun = 0;
-
-//         updateMiktar1(ist, urtHafta, urtGun);
-
-//         var hedef = plnHafta * (90 / 100);
-
-//         $('#' + ist + 'Plan').html(plnHafta);
-//         var kalan = plnHafta - urtHafta;
-//         $('#' + ist + 'Kalan').html(kalan);
-//         var yuzde = Math.round((urtHafta / hedef) * 100);
-//         // console.log(yuzde);
-//         $('#' + ist + 'Progress').css('width', yuzde + '%');
-//         $('#' + ist + 'Progress').attr('aria-valuenow', yuzde);
-
-//         $('#' + ist + 'AnlikYuzde').html(yuzde);
-//       } else {
-//         $('#' + ist + 'Plan').html('0');
-//         $('#' + ist + 'Uretilen').html('0');
-//         $('#' + ist + 'Kalan').html('0');
-//         $('#' + ist + 'AnlikYuzde').html('<span class="yuzdeIsareti">%</span>0');
-//       }
-//     })
-//     .catch(function (error) {
-//       console.error('Plan çekme hatası:', error);
-//     });
-// }
-
-// Miktarları güncelleme fonksiyonu
 function updateMiktar1(ist, hafta, gun) {
   if (miktarTexts[ist]) {
     miktarTexts[ist][0] = Math.round(hafta);
