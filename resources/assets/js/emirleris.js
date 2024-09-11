@@ -516,6 +516,13 @@ $(function () {
             message: 'Lütfen Grup Kodunu Giriniz'
           }
         }
+      },
+      PLANLANANMIKTAR: {
+        validators: {
+          notEmpty: {
+            message: 'Lütfen Miktar Giriniz'
+          }
+        }
       }
     },
     plugins: {
