@@ -13,6 +13,7 @@ use App\Http\Controllers\planlama\Mamuller;
 use App\Http\Controllers\planlama\Emirler;
 use App\Http\Controllers\planlama\Uretimler;
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\DocumentController;
 use App\Models\StokHrkt;
 
 Route::get('/', [Landing::class, 'index'])->name('front-pages-landing');
@@ -64,6 +65,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
   // Dashboard
   Route::get('/dashboard/verial', [HomePage::class, 'veriAl']);
 
+  // Dokumantasyon
+  Route::get('/dokumanlar', [DocumentController::class, 'index'])->name('documents.index');
+  Route::get('documents/{id}', [DocumentController::class, 'show'])->name('documents.show');
 
 
 

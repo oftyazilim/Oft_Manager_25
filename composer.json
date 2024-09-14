@@ -9,7 +9,6 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "box/spout": "^3.3",
     "laravel/framework": "^11.0",
     "laravel/jetstream": "^5.1",
     "laravel/sanctum": "^4.0",
